@@ -1,0 +1,179 @@
+/* page.module.css */
+
+/* Animation Div Styles */
+.animationDiv {
+  position: fixed;
+  z-index: 100;
+  overflow: hidden;
+  display: block; /* Controlled via conditional rendering */
+}
+
+.blurEffect {
+  backdrop-filter: blur(10px);
+}
+
+.noBlurEffect {
+  backdrop-filter: none;
+}
+
+/* Video Styles */
+.logoVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Profile Image Container Styles */
+.profileImageContainer {
+  width: 28rem;
+  height: 28rem;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+}
+
+/* Additional Classes for Animation Div based on state */
+.hiddenAnimation {
+  display: none;
+}
+
+.gradientBackground {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center; /* Vertically center */
+  justify-content: center; /* Horizontally center */
+  background: linear-gradient(
+      to bottom,
+      #fdfdfd 0%, /* Light neutral tone for navbar */
+      #f3faf7 40%, /* Very soft mint green */
+      #e6f4f1 50%, /* Subtle green blend */
+      #d1eae3 100% /* Low-key green tone */
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(255, 255, 255, 0.8) 0%, /* Almost white for subtle highlight */
+      rgba(243, 250, 247, 0.3) 50%, /* Soft green tint */
+      rgba(210, 234, 227, 0.1) 100% /* Low opacity green */
+    );
+  background-blend-mode: overlay;
+}
+
+.mainContent {
+  width: 100%;
+  max-width: 1200px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Flex Container for Text and Image */
+.contentFlex {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 2rem; /* Reduced gap */
+  margin-top: 4rem; /* Push content down */
+}
+
+@media (min-width: 768px) {
+  .contentFlex {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+/* Text Styles */
+.title {
+  font-family: 'Antonio', sans-serif;
+  font-size: 5rem; /* Increased from 4rem to 5rem */
+  font-weight: 800;
+  background: linear-gradient(to right, #2dd4bf, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Subtitle Text */
+.subtitle {
+  /* font-family: 'Antonio', sans-serif; */ /* Applied via className */
+  font-size: 1.2rem; /* Smaller size */
+  color: #374151; /* Tailwind's gray-700 */
+  line-height: 1.8;
+  margin-top: 1rem; /* Add spacing below title */
+}
+
+.highlight {
+  color: #10b981; /* Tailwind's emerald-600 */
+}
+
+.contactIcons a {
+  color: #374151; /* Tailwind's gray-700 */
+  transition: all 0.3s ease;
+}
+
+.contactIcons a:hover {
+  color: #10b981; /* Tailwind's emerald-600 */
+  transform: scale(1.1); /* Slight enlarge on hover */
+}
+
+/* Blurred Image Background */
+.blurredImage {
+  position: absolute;
+  width: 18rem; /* Equivalent to w-72 */
+  height: 18rem; /* Equivalent to h-72 */
+  border-radius: 50%;
+  overflow: hidden;
+  filter: blur(60px); /* Adjust the blur intensity as needed */
+  opacity: 0.3;
+  transition: all 0.8s ease-out;
+}
+
+@media (min-width: 768px) {
+  .blurredImage {
+    width: 28rem; /* Equivalent to md:w-[28rem] */
+    height: 28rem; /* Equivalent to md:h-[28rem] */
+  }
+}
+
+/* Main Profile Image */
+.profileImage {
+  position: relative;
+  width: 18rem; /* Equivalent to w-72 */
+  height: 18rem; /* Equivalent to h-72 */
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+  z-index: 10;
+  transition: all 0.8s ease-out;
+}
+
+@media (min-width: 768px) {
+  .profileImage {
+    width: 28rem; /* Equivalent to md:w-[28rem] */
+    height: 28rem; /* Equivalent to md:h-[28rem] */
+  }
+}
+
+/* Adjust Heading Position */
+.adjustedHeading {
+  margin-bottom: 1rem; /* Increased from 1rem */
+  padding-bottom: .5rem; /* Add some extra padding */
+}
+
+
+@media (min-width: 768px) {
+  .adjustedHeading {
+    margin-bottom: 2rem; /* Moves the heading up by 2rem on larger screens */
+  }
+}
+
+.indentedText {
+  padding-left: 1rem; /* Adds left padding to subsequent lines */
+}
+
+.indentedIcons {
+  padding-left: 1rem;
+}

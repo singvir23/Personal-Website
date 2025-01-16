@@ -1,101 +1,225 @@
-import Image from "next/image";
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
+import { Antonio } from 'next/font/google';
+import styles from './page.module.css'; // Import the CSS module
+
+const antonio = Antonio({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-antonio',
+});
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [isAnimating, setIsAnimating] = useState(true);
+  const [showContent, setShowContent] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const [skipHomeAnimation, setSkipHomeAnimation] = useState(false);
+  const [logoPosition, setLogoPosition] = useState<'center' | 'navbar'>('center');
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  useEffect(() => {
+    setIsMounted(true);
+    const ran = localStorage.getItem("introRan");
+    
+    if (ran === "true") {
+      // Skip animations if we've been here before
+      setIsAnimating(false);
+      setShowContent(true);
+      setSkipHomeAnimation(true);
+      setLogoPosition('navbar');
+    } else {
+      // First visit - hide scroll
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
+  const handleVideoEnd = () => {
+    setIsAnimating(false);
+    
+    // Wait longer after video ends before starting transition
+    setTimeout(() => {
+      // Start moving logo to navbar
+      setLogoPosition('navbar');
+      
+      // Add delay before showing content and updating localStorage
+      setTimeout(() => {
+        setShowContent(true);
+        
+        // Additional delay before marking intro as complete
+        setTimeout(() => {
+          localStorage.setItem("introRan", "true");
+          window.dispatchEvent(new Event("storage"));
+          document.body.style.overflow = "auto";
+        }, 500); // Delay after content starts showing
+        
+      }, 800); // Delay before showing content
+      
+    }, 800); // Delay after video ends
+  };
+
+  if (!isMounted) return null;
+
+  return (
+    <div className={antonio.className}>
+      {/* Logo Animation */}
+      {!skipHomeAnimation && (
+        <motion.div
+          className="fixed z-100"
+          initial={{
+            width: "600px",
+            height: "600px",
+            top: "50%",
+            left: "50%",
+            x: "-50%",
+            y: "-50%",
+            borderRadius: "50%",
+          }}
+          animate={
+            logoPosition === 'navbar'
+              ? {
+                  width: "64px",
+                  height: "64px",
+                  top: "1rem",
+                  left: "3rem",
+                  x: 0,
+                  y: 0,
+                  borderRadius: "50%",
+                }
+              : {}
+          }
+          transition={{
+            duration: .8, // Increased from 0.8 to 1.2
+            type: "spring",
+            damping: 22, // Reduced from 25 to 22 for smoother motion
+            stiffness: 100, // Reduced from 120 to 100 for smoother motion
+          }}
+        >
+          <video
+            autoPlay
+            muted
+            playsInline
+            onEnded={handleVideoEnd}
+            className="w-full h-full object-cover rounded-full"
+            src="/viraajanimation.mp4"
+          />
+        </motion.div>
+      )}
+
+      {/* Main Content */}
+      {showContent && (
+        <motion.div
+          className="min-h-screen w-full flex items-center justify-center bg-gradient-to-b from-[#fdfdfd] via-[#f3faf7] to-[#d1eae3]"
+          initial={!skipHomeAnimation ? { opacity: 0 } : {}}
+          animate={!skipHomeAnimation ? { opacity: 1 } : {}}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
+        >
+          <motion.div
+            className="w-full max-w-7xl px-8 py-4"
+            initial={!skipHomeAnimation ? { opacity: 0 } : {}}
+            animate={!skipHomeAnimation ? { opacity: 1 } : {}}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+            <motion.div
+              className="flex flex-col-reverse md:flex-row items-center gap-8 mt-16"
+              initial={!skipHomeAnimation ? { opacity: 0, y: 20 } : {}}
+              animate={!skipHomeAnimation ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
+            >
+              {/* Left Column */}
+              <div className="w-full md:w-1/2 text-center md:text-left">
+                <motion.h1
+                  className={`text-6xl sm:text-7xl md:text-8xl font-extrabold bg-gradient-to-r from-[#2dd4bf] to-[#10b981] bg-clip-text text-transparent drop-shadow-lg leading-none mb-4 ${styles.adjustedHeading}`}
+                  initial={!skipHomeAnimation ? { opacity: 0, y: 20 } : {}}
+                  animate={!skipHomeAnimation ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
+                >
+                  Hello, I'm Viraaj 
+                </motion.h1>
+
+                <motion.p
+                  className={`text-lg text-gray-700 leading-relaxed mt-4 ${styles.indentedText}`}
+                  initial={!skipHomeAnimation ? { opacity: 0, y: 20 } : {}}
+                  animate={!skipHomeAnimation ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.7, duration: 0.8, ease: "easeOut" }}
+                >
+                  I am currently pursuing a BS in Computer Science with a minor
+                  in Digital Storytelling at the University of Maryland
+                </motion.p>
+
+                {/* Contact Icons */}
+                <motion.div
+                  className={`flex justify-center md:justify-start space-x-8 mt-6 ${styles.indentedIcons}`}
+                  initial={!skipHomeAnimation ? { opacity: 0, y: 20 } : {}}
+                  animate={!skipHomeAnimation ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.9, duration: 0.8, ease: "easeOut" }}
+                >
+                  <a
+                    href="https://www.linkedin.com/in/viraaj-singh/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-700 hover:text-emerald-600 transform hover:scale-110 transition-all duration-300"
+                  >
+                    <FaLinkedin size={36} />
+                  </a>
+                  <a
+                    href="https://github.com/singvir23"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-700 hover:text-emerald-600 transform hover:scale-110 transition-all duration-300"
+                  >
+                    <FaGithub size={36} />
+                  </a>
+                  <a
+                    href="mailto:viraajsingh135@gmail.com"
+                    className="text-gray-700 hover:text-emerald-600 transform hover:scale-110 transition-all duration-300"
+                  >
+                    <FaEnvelope size={36} />
+                  </a>
+                </motion.div>
+              </div>
+
+              {/* Right Column */}
+              <div className="w-full md:w-1/2 flex justify-center md:justify-end relative">
+                {/* Blurred Background */}
+                <motion.div
+                  className={styles.blurredImage}
+                  initial={!skipHomeAnimation ? { scale: 0.8, opacity: 0 } : {}}
+                  animate={!skipHomeAnimation ? { scale: 1, opacity: 1 } : {}}
+                  transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
+                >
+                  <img
+                    src="/viraaj.jpg"
+                    alt="Profile Blurred"
+                    className="w-full h-full object-cover"
+                  />
+                </motion.div>
+
+                {/* Main Profile Image */}
+                <motion.div
+                  className={styles.profileImage}
+                  initial={!skipHomeAnimation ? { opacity: 0, scale: 0.8 } : {}}
+                  animate={!skipHomeAnimation ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
+                >
+                  <img
+                    src="/viraaj.jpg"
+                    alt="Profile"
+                    className="w-full h-full object-cover object-[35%_50%]"
+                  />
+
+
+                </motion.div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      )}
     </div>
   );
 }

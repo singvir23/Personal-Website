@@ -1,0 +1,75 @@
+.skillCardContainer {
+  position: relative;
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.skillCard {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.skillCard:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.skillCardContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.skillIcon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 0.5rem;
+  object-fit: contain;
+}
+
+.skillName {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #4a5568;
+  text-align: center;
+  line-height: 1.2;
+  width: 100%;
+  padding: 0 0.25rem;
+  margin-top: auto;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom right, rgba(139, 92, 246, 0.8), rgba(236, 72, 153, 0.8));
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.overlayText {
+  color: white;
+  font-weight: 500;
+  font-size: 0.8rem;
+}

@@ -1,0 +1,237 @@
+/* Projects.module.css */
+
+/* Projects Container with Gradient Background */
+.projectsContainer {
+  background: linear-gradient(
+      to bottom,
+      #fdfdfd 0%, /* Light neutral tone for navbar */
+      #f3faf7 40%, /* Very soft mint green */
+      #e6f4f1 50%, /* Subtle green blend */
+      #d1eae3 100% /* Low-key green tone */
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(255, 255, 255, 0.8) 0%, /* Almost white for subtle highlight */
+      rgba(243, 250, 247, 0.3) 50%, /* Soft green tint */
+      rgba(210, 234, 227, 0.1) 100% /* Low opacity green */
+    );
+  background-blend-mode: overlay;
+  padding: 7rem 1rem;
+  overflow-x: hidden;
+  font-family: 'Quicksand', sans-serif;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Projects Wrapper Grid */
+.projectsWrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 2rem;
+  row-gap: 2rem;
+  max-width: 120rem;
+  margin: 0 auto;
+}
+
+/* Medium Screens: Two Columns */
+@media (min-width: 768px) {
+  .projectsWrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Ensure No Four Columns on Larger Screens */
+@media (min-width: 1280px) {
+  .projectsWrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Project Card Styling */
+.projectCard {
+  position: relative;
+  width: 100%;
+  will-change: transform;
+}
+
+/* Project Content Styling with Semi-Transparent Background */
+.projectContent {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 
+    0 10px 15px rgba(0, 0, 0, 0.05),
+    0 4px 6px rgba(0, 0, 0, 0.02);
+  transition: transform 0s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect on Project Content */
+.projectContent:hover {
+  box-shadow: 
+    0 20px 25px rgba(0, 0, 0, 0.05),
+    0 10px 10px rgba(0, 0, 0, 0.02);
+}
+
+/* Medium Screens: Two Columns in Project Content */
+@media (min-width: 768px) {
+  .projectContent {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Image Container Styling */
+.imageContainer {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  width: 100%;
+  height: 200px; /* Fixed height */
+}
+
+/* Additional Styling for DrumAI Image */
+.drumAIImage {
+  /* Ensure the entire image is visible within the container */
+  object-fit: contain; /* Makes sure the entire image fits inside */
+  object-position: center 0%; /* Adjusts the vertical position */
+}
+
+/* Project Image Styling */
+.projectImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the container without distortion */
+  transition: transform 0.3s ease;
+}
+
+/* Project Details Styling */
+.projectDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Project Title Styling */
+.projectTitle {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #1F2937;
+}
+
+/* Project Description Styling */
+.projectDescription {
+  color: #4B5563;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Tech Stack Styling */
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  align-items: center;
+}
+
+/* Tech Icon Wrapper for Custom Tooltip */
+.techIconWrapper {
+  position: relative; /* Needed for positioning the tooltip */
+  width: 24px; /* Adjust size as needed */
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer; /* Indicate interactivity */
+}
+
+/* Tech Icon Styling */
+.techIcon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Custom Tooltip Styles */
+.techIconWrapper::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 125%; /* Position above the icon */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+  z-index: 10;
+}
+
+/* Tooltip Arrow */
+.techIconWrapper::before {
+  content: '';
+  position: absolute;
+  bottom: 115%; /* Slightly above the tooltip */
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.75) transparent transparent transparent;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 10;
+}
+
+/* Show Tooltip on Hover */
+.techIconWrapper:hover::after,
+.techIconWrapper:hover::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px); /* Slight upward movement */
+}
+
+/* Project Links Styling */
+.projectLinks {
+  display: flex;
+  gap: 1.5rem;
+}
+
+/* GitHub and Demo Link Styling */
+.githubLink,
+.demoLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.githubLink {
+  color: #059669;
+}
+
+.demoLink {
+  color: #10B981;
+}
+
+.githubLink:hover {
+  color: #047857;
+}
+
+.demoLink:hover {
+  color: #059669;
+}
+
+/* Additional Styles for Parallax Effect */
+.projectCard {
+  will-change: transform;
+}
