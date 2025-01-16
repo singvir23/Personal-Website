@@ -27,8 +27,8 @@ const techIcons: { [key: string]: string } = {
 const projects: Project[] = [
   {
     title: 'AI Drum Lick Generator',
-    description: 'A tool that converts textual descriptions into sheet music, helping drum students learn rudiments—the building blocks of drumming.',
-    longDescription: 'I\'ve always wanted to build something that blends my love of music and technology. After considering several options, I decided on this project. When I initially started drumming, learning to read sheet music presented a huge difficulty for me. Us drummers refer to clusters of notes as "rudiments," which serve as the foundation or "words" of the drumming language. To properly master drumming, you must learn these rudiments and variations.\n    While there is a wealth of available sheet music focusing on various rudiments, obtaining music tailored to your individual needs or ideas can be quite challenging. This difficulty prompted the development of my project.\n    This tool allows users to enter unique requests and receive personalized results that may not be available anywhere else on the internet. This is made possible by fine-tuning GPT-4 and utilizing "Viraaj\'s Drumming Notation." The notation is the training data for the LLM, and it is processed by a Python script that converts it to MusicXML. This musicXML code is then converted into sheet music, allowing drummers to access custom exercises and compositions.\n    Above is a flow chart that shows my thought process throughout this project, as well as the next steps in its growth.',
+    description: "A tool that converts textual descriptions into sheet music, helping drum students learn rudiments—the building blocks of drumming.",
+    longDescription: "I've always wanted to build something that blends my love of music and technology. After considering several options, I decided on this project. When I initially started drumming, learning to read sheet music presented a huge difficulty for me. Us drummers refer to clusters of notes as 'rudiments,' which serve as the foundation or 'words' of the drumming language. To properly master drumming, you must learn these rudiments and variations.\n    While there is a wealth of available sheet music focusing on various rudiments, obtaining music tailored to your individual needs or ideas can be quite challenging. This difficulty prompted the development of my project.\n    This tool allows users to enter unique requests and receive personalized results that may not be available anywhere else on the internet. This is made possible by fine-tuning GPT-4 and utilizing 'Viraaj's Drumming Notation.' The notation is the training data for the LLM, and it is processed by a Python script that converts it to MusicXML. This musicXML code is then converted into sheet music, allowing drummers to access custom exercises and compositions.\n    Above is a flow chart that shows my thought process throughout this project, as well as the next steps in its growth.",
     technologies: ['React', 'Node', 'Python', 'CSS', 'JavaScript', 'AWS', 'ChatGPT'],
     image: '/drumAI.png',
     workflowImage: 'https://embed.figma.com/board/KouIzsSKkXAtlWrBVWQG0a/Drum-AI?node-id=0-1&embed-host=share',
@@ -38,7 +38,7 @@ const projects: Project[] = [
   {
     title: 'Home Network',
     description: 'Created a home network for my family using Ubuntu Server and other open-source tools. Established a remote connection for global access',
-    longDescription: 'The AI Drum Lick Generator utilizes deep learning models to create unique and musically coherent drum patterns. Built with a React frontend and Node.js backend, the application processes MIDI data to train a neural network that can generate realistic drum sequences. Users can specify parameters like tempo, complexity, and style to influence the generated patterns.',
+    longDescription: "The AI Drum Lick Generator utilizes deep learning models to create unique and musically coherent drum patterns. Built with a React frontend and Node.js backend, the application processes MIDI data to train a neural network that can generate realistic drum sequences. Users can specify parameters like tempo, complexity, and style to influence the generated patterns.",
     technologies: ['Ubuntu', 'WireGuard', 'Jellyfin'],
     image: '/api/placeholder/600/400',
     workflowImage: '/api/placeholder/800/400',
@@ -48,7 +48,7 @@ const projects: Project[] = [
   {
     title: 'News Webscraper',
     description: 'A webscraper designed to compare FOX and CNN in their images and word counts. Developed for the UMD Digital Engagement Lab',
-    longDescription: '	This project is intended to further the research in the Digital Engagement Lab at UMD. The Digital Engagement Lab, run by Professor Ronald Yaros, aims to refine a research-based digital content structure model.',
+    longDescription: "This project is intended to further the research in the Digital Engagement Lab at UMD. The Digital Engagement Lab, run by Professor Ronald Yaros, aims to refine a research-based digital content structure model.",
     technologies: ['React', 'Python', 'BeautifulSoup'],
     image: '/cnn.png',
     workflowImage: '/api/placeholder/800/400',
@@ -58,7 +58,7 @@ const projects: Project[] = [
   {
     title: 'SentiMental Chatbot',
     description: 'A syllabus chatbot for 70 journalism students combines LLM\'s with sentiment analysis to address queries and guide those with negative emotions to UMD mental health resources.',
-    longDescription: 'The Sentimental Chatbot is for my Professor\'s journalism class with around 70 students. He told me that he was getting a lot of questions that could be easily be answered by the syllabus. After hearing this, I realized that I could utilize ChatGPT\'s assistants API to create a syllabus chatbot for him. I provided the syllabus as context, and the assistants API utulizes RAG to find the answer to the query. To solve the issue of hallucinations, I employed heavy negative prompting to ensure the model only answers questions directly related to the syllabus or class. In the case that the query doesn\'t meet these parameters, the chatbot instructs the student to email the Professor. ',
+    longDescription: "The Sentimental Chatbot is for my Professor's journalism class with around 70 students. He told me that he was getting a lot of questions that could be easily be answered by the syllabus. After hearing this, I realized that I could utilize ChatGPT's assistants API to create a syllabus chatbot for him. I provided the syllabus as context, and the assistants API utulizes RAG to find the answer to the query. To solve the issue of hallucinations, I employed heavy negative prompting to ensure the model only answers questions directly related to the syllabus or class. In the case that the query doesn\'t meet these parameters, the chatbot instructs the student to email the Professor.",
     technologies: ['React', 'Node', 'GCP', 'ChatGPT'],
     image: 'chatbot.png',
     workflowImage: 'chatbot.png',

@@ -13,7 +13,6 @@ const antonio = Antonio({
 });
 
 export default function Home() {
-  const [isAnimating, setIsAnimating] = useState(true);
   const [showContent, setShowContent] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [skipHomeAnimation, setSkipHomeAnimation] = useState(false);
@@ -24,8 +23,6 @@ export default function Home() {
     const ran = localStorage.getItem("introRan");
     
     if (ran === "true") {
-      // Skip animations if we've been here before
-      setIsAnimating(false);
       setShowContent(true);
       setSkipHomeAnimation(true);
       setLogoPosition('navbar');
@@ -40,7 +37,6 @@ export default function Home() {
   }, []);
 
   const handleVideoEnd = () => {
-    setIsAnimating(false);
     
     // Wait longer after video ends before starting transition
     setTimeout(() => {
