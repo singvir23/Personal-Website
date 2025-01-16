@@ -135,7 +135,7 @@ export default function Home() {
                   animate={!skipHomeAnimation ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
                 >
-                  Hello, I'm Viraaj 
+                  Hello, I am Viraaj 
                 </motion.h1>
 
                 <motion.p
