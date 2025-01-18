@@ -1,6 +1,6 @@
 /* Projects.module.css */
 
-/* Projects Container with Gradient Background */
+/* Projects Container with Subtle Gradient Background */
 .projectsContainer {
   background: linear-gradient(
       to bottom,
@@ -11,28 +11,30 @@
     ),
     radial-gradient(
       circle at top right,
-      rgba(255, 255, 255, 0.8) 0%, /* Almost white for subtle highlight */
-      rgba(243, 250, 247, 0.3) 50%, /* Soft green tint */
+      rgba(255, 255, 255, 0.6) 0%, /* Increased transparency */
+      rgba(243, 250, 247, 0.2) 50%, /* Soft green tint */
       rgba(210, 234, 227, 0.1) 100% /* Low opacity green */
     );
   background-blend-mode: overlay;
-  padding: 7rem 1rem;
+  padding: 5rem 2rem; /* Increased horizontal padding */
   overflow-x: hidden;
   font-family: 'Quicksand', sans-serif;
   min-height: 100vh;
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* Align to start for better flow */
   justify-content: center;
 }
 
 /* Projects Wrapper Grid */
 .projectsWrapper {
+  padding-top: 30px;
   display: grid;
   grid-template-columns: 1fr;
-  column-gap: 2rem;
-  row-gap: 2rem;
-  max-width: 120rem;
+  column-gap: 0.5rem;
+  row-gap: 0.5rem;
+  max-width: 100rem; /* Increased max-width for larger screens */
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -40,13 +42,18 @@
 @media (min-width: 768px) {
   .projectsWrapper {
     grid-template-columns: 1fr 1fr;
+    column-gap: 2.5rem;
+    row-gap: 2.5rem;
   }
 }
 
-/* Ensure No Four Columns on Larger Screens */
+/* Large Screens: Ensure 2x2 Grid and Fill Space */
 @media (min-width: 1280px) {
   .projectsWrapper {
-    grid-template-columns: 1fr 1fr;
+    max-width: 120rem; /* Further increase max-width */
+    grid-template-columns: 1fr 1fr; /* Maintain two columns */
+    column-gap: 3rem;
+    row-gap: 3rem;
   }
 }
 
@@ -54,29 +61,30 @@
 .projectCard {
   position: relative;
   width: 100%;
-  will-change: transform;
+  background: rgba(255, 255, 255, 0.95); /* Slightly more opaque */
+  backdrop-filter: blur(6px); /* Subtle blur */
+  border-radius: 0.75rem;
+  padding: 1.5rem; /* Increased padding for larger cards */
+  box-shadow: 
+    0 6px 12px rgba(0, 0, 0, 0.05),
+    0 3px 6px rgba(0, 0, 0, 0.02);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Project Content Styling with Semi-Transparent Background */
+/* Hover Effect on Project Card */
+.projectCard:hover {
+  transform: translateY(-5px); /* Slight upward movement */
+  box-shadow: 
+    0 12px 24px rgba(0, 0, 0, 0.05),
+    0 6px 12px rgba(0, 0, 0, 0.02);
+}
+
+/* Project Content Styling */
 .projectContent {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(8px);
-  border-radius: 1rem;
-  padding: 1.5rem;
-  box-shadow: 
-    0 10px 15px rgba(0, 0, 0, 0.05),
-    0 4px 6px rgba(0, 0, 0, 0.02);
-  transition: transform 0s ease, box-shadow 0.3s ease;
-}
-
-/* Hover Effect on Project Content */
-.projectContent:hover {
-  box-shadow: 
-    0 20px 25px rgba(0, 0, 0, 0.05),
-    0 10px 10px rgba(0, 0, 0, 0.02);
+  gap: 1.5rem;
+  width: 100%;
 }
 
 /* Medium Screens: Two Columns in Project Content */
@@ -90,37 +98,59 @@
 .imageContainer {
   position: relative;
   overflow: hidden;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   width: 100%;
-  height: 200px; /* Fixed height */
+  height: 250px; /* Increased height for better proportions */
+  display: flex; /* Added flex display */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
 }
 
-/* Additional Styling for DrumAI Image */
+/* Specific Styling for AI Drum Lick Generator Image */
 .drumAIImage {
-  /* Ensure the entire image is visible within the container */
-  object-fit: contain; /* Makes sure the entire image fits inside */
-  object-position: center 0%; /* Adjusts the vertical position */
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  padding: 1rem; /* Add some padding to prevent image from touching edges */
 }
 
 /* Project Image Styling */
 .projectImage {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures the image covers the container without distortion */
+  object-fit: cover;
+  object-position: center; /* Ensure image is centered */
   transition: transform 0.3s ease;
+}
+
+/* Hover Effect on Project Image */
+.projectCard:hover .projectImage {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* New Styling for News Webscraper Image */
+.newsWebscraperImage {
+  width: 100%; /* Full width on small screens */
+  height: auto; /* Adjust height based on image aspect ratio */
+}
+
+@media (min-width: 768px) {
+  .newsWebscraperImage {
+    width: 80%; /* 50% width on medium and larger screens */
+  }
 }
 
 /* Project Details Styling */
 .projectDetails {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 /* Project Title Styling */
 .projectTitle {
-  font-size: 1.75rem;
-  font-weight: bold;
+  font-size: 1.75rem; /* Increased font size for prominence */
+  font-weight: 600;
   color: #1F2937;
 }
 
@@ -128,27 +158,27 @@
 .projectDescription {
   color: #4B5563;
   line-height: 1.6;
-  font-size: 1rem;
+  font-size: 1.05rem; /* Slightly larger font for readability */
 }
 
 /* Tech Stack Styling */
 .techStack {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
   align-items: center;
 }
 
 /* Tech Icon Wrapper for Custom Tooltip */
 .techIconWrapper {
-  position: relative; /* Needed for positioning the tooltip */
-  width: 24px; /* Adjust size as needed */
-  height: 24px;
+  position: relative;
+  width: 20px; /* Slightly smaller size */
+  height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer; /* Indicate interactivity */
+  cursor: pointer;
 }
 
 /* Tech Icon Styling */
@@ -162,29 +192,28 @@
 .techIconWrapper::after {
   content: attr(data-tooltip);
   position: absolute;
-  bottom: 125%; /* Position above the icon */
+  bottom: 125%;
   left: 50%;
   transform: translateX(-50%);
   background-color: rgba(0, 0, 0, 0.75);
   color: #fff;
-  padding: 4px 8px;
-  border-radius: 4px;
+  padding: 3px 6px;
+  border-radius: 3px;
   white-space: nowrap;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
   z-index: 10;
 }
 
-/* Tooltip Arrow */
 .techIconWrapper::before {
   content: '';
   position: absolute;
-  bottom: 115%; /* Slightly above the tooltip */
+  bottom: 115%;
   left: 50%;
   transform: translateX(-50%);
-  border-width: 5px;
+  border-width: 4px;
   border-style: solid;
   border-color: rgba(0, 0, 0, 0.75) transparent transparent transparent;
   opacity: 0;
@@ -193,17 +222,16 @@
   z-index: 10;
 }
 
-/* Show Tooltip on Hover */
 .techIconWrapper:hover::after,
 .techIconWrapper:hover::before {
   opacity: 1;
-  transform: translateX(-50%) translateY(-5px); /* Slight upward movement */
+  transform: translateX(-50%) translateY(-3px);
 }
 
 /* Project Links Styling */
 .projectLinks {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 /* GitHub and Demo Link Styling */
@@ -212,7 +240,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .githubLink {
@@ -229,9 +257,4 @@
 
 .demoLink:hover {
   color: #059669;
-}
-
-/* Additional Styles for Parallax Effect */
-.projectCard {
-  will-change: transform;
 }

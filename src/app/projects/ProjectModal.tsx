@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Github, ExternalLink, X } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
 
 export interface Project {
   title: string;
@@ -55,7 +56,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             className="max-w-4xl w-full bg-white rounded-lg shadow-xl z-60 max-h-[80vh] overflow-y-auto"
-            onClick={(e) => e.stopPropagation()} // Prevent click from closing modal
+            onClick={(e) => e.stopPropagation()}
           >
             <div className="relative p-6">
               <button
@@ -69,7 +70,6 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
               <h2 className="text-2xl font-bold mb-4 pr-8">{project.title}</h2>
               
               <div className="space-y-6">
-                {/* Display Workflow Image or Embedded Content */}
                 {project.workflowImage ? (
                   project.workflowImage.includes('embed.figma.com') ? (
                     <iframe
@@ -101,9 +101,11 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                 )}
 
                 <div className="space-y-4">
-                  <p className="text-gray-700 leading-relaxed">
-                    {project.longDescription || `${project.description} This is a longer description of the project that would go into detail about the technical challenges, solutions, and outcomes.`}
-                  </p>
+                  <div className="prose max-w-none text-gray-700">
+                    <ReactMarkdown>
+                      {project.longDescription || `${project.description} This is a longer description of the project that would go into detail about the technical challenges, solutions, and outcomes.`}
+                    </ReactMarkdown>
+                  </div>
                   
                   <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech) => (

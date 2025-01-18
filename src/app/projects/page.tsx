@@ -30,7 +30,7 @@ const projects: Project[] = [
     description: "A tool that converts textual descriptions into sheet music, helping drum students learn rudiments—the building blocks of drumming.",
     longDescription: "I've always wanted to build something that blends my love of music and technology. After considering several options, I decided on this project. When I initially started drumming, learning to read sheet music presented a huge difficulty for me. Us drummers refer to clusters of notes as 'rudiments,' which serve as the foundation or 'words' of the drumming language. To properly master drumming, you must learn these rudiments and variations.\n    While there is a wealth of available sheet music focusing on various rudiments, obtaining music tailored to your individual needs or ideas can be quite challenging. This difficulty prompted the development of my project.\n    This tool allows users to enter unique requests and receive personalized results that may not be available anywhere else on the internet. This is made possible by fine-tuning GPT-4 and utilizing 'Viraaj's Drumming Notation.' The notation is the training data for the LLM, and it is processed by a Python script that converts it to MusicXML. This musicXML code is then converted into sheet music, allowing drummers to access custom exercises and compositions.\n    Above is a flow chart that shows my thought process throughout this project, as well as the next steps in its growth.",
     technologies: ['React', 'Node', 'Python', 'CSS', 'JavaScript', 'AWS', 'ChatGPT'],
-    image: '/drumAI.png',
+    image: '/drumAI.jpeg',
     workflowImage: 'https://embed.figma.com/board/KouIzsSKkXAtlWrBVWQG0a/Drum-AI?node-id=0-1&embed-host=share',
     github: 'https://github.com/singvir23/drum-AI-v1.5',
     demo: 'https://drum-ai-frontend.vercel.app/',
@@ -38,13 +38,38 @@ const projects: Project[] = [
   {
     title: "Home Network",
     description: "Created a home network for my family using Ubuntu Server and other open-source tools. Established a remote connection for global access",
-    longDescription: "The AI Drum Lick Generator utilizes deep learning models to create unique and musically coherent drum patterns. Built with a React frontend and Node.js backend, the application processes MIDI data to train a neural network that can generate realistic drum sequences. Users can specify parameters like tempo, complexity, and style to influence the generated patterns.",
+    longDescription: `I decided to create a home server for my family because we were tired of paying $85 a year for Google Cloud storage. I had an old PC lying dormant from my gaming days, so repurposing it as a home server seemed like a good case to bring it back to its glory days. With all the open-source resources, I was able to do this for a grand total of $0 (excluding the original PC cost, of course).
+  
+  Below, I’ve outlined the main functionalities of the server along with the technologies I used to achieve them:
+  
+  
+  **Ubuntu Server Installation:**
+  I installed Ubuntu Server to build a lightweight and efficient home server. The process included configuring the BIOS and making sure the OS was set up for remote management and future customization. Ubuntu Server doesn’t render a complicated UI, allowing for precious resources to be saved.
+  
+  
+  **Static IP Setup & SSH Access:**
+  I set up a static IP address to keep the server accessible on the network and configured SSH for secure, remote access. This made managing the server from any device super convenient and straightforward.
+  
+  
+  **SMB File Sharing:**
+  Using Samba, I created a shared folder that works like a personal cloud for all my devices. It’s secure, easy to use, and lets me transfer files across Windows, macOS, and Linux without any hassle.
+  
+  
+  **Jellyfin Media Server:**
+  I set up Jellyfin to turn the server into a personal streaming platform for music, movies, and shows. Now, I can organize and stream my media collection to any device on my network.
+  
+  
+  **Wireguard VPN:**
+  I configured Wireguard to set up a secure VPN that connects me to my home server from anywhere. It’s fast, private, and works perfectly with the dynamic DNS I set up for remote access.
+  
+  `,
     technologies: ['Ubuntu', 'WireGuard', 'Jellyfin'],
-    image: '/api/placeholder/600/400',
-    workflowImage: '/api/placeholder/800/400',
+    image: '/server.jpeg',
+    workflowImage: '/serverwork.jpeg',
     github: 'https://github.com/singvir23/drum-AI-v1.5',
     demo: 'https://drum-ai-frontend.vercel.app/',
   },
+ 
   {
     title: "News Webscraper",
     description: "A webscraper designed to compare FOX and CNN in their images and word counts. Developed for the UMD Digital Engagement Lab",
@@ -56,8 +81,8 @@ const projects: Project[] = [
     demo: 'https://news-webscraper-red.vercel.app/',
   },
   {
-    title: "SentiMental Chatbot",
-    description: "A syllabus chatbot for 70 journalism students combines LLM's with sentiment analysis to address queries and guide those with negative emotions to UMD mental health resources.",
+    title: "Sentimental Chatbot",
+    description: "A syllabus chatbot for 70 JOUR289i students using LLMs and sentiment analysis to address queries and direct those with negativity to UMD resources.",
     longDescription: "The Sentimental Chatbot is for my Professor's journalism class with around 70 students. He told me that he was getting a lot of questions that could be easily be answered by the syllabus. After hearing this, I realized that I could utilize ChatGPT's assistants API to create a syllabus chatbot for him. I provided the syllabus as context, and the assistants API utulizes RAG to find the answer to the query. To solve the issue of hallucinations, I employed heavy negative prompting to ensure the model only answers questions directly related to the syllabus or class. In the case that the query doesn't meet these parameters, the chatbot instructs the student to email the Professor.",
     technologies: ['React', 'Node', 'GCP', 'ChatGPT'],
     image: 'chatbot.png',
@@ -87,7 +112,8 @@ export default function Projects() {
                   src={project.image}
                   alt={project.title}
                   className={`${styles.projectImage} ${
-                    project.title === 'AI Drum Lick Generator' ? styles.drumAIImage : ''
+                    project.title === 'AI Drum Lick Generator' ? styles.drumAIImage :
+                    project.title === 'News Webscraper' ? styles.newsWebscraperImage : ''
                   }`}
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}

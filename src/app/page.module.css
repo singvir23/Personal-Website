@@ -1,5 +1,3 @@
-/* page.module.css */
-
 /* Animation Div Styles */
 .animationDiv {
   position: fixed;
@@ -30,7 +28,7 @@
   height: 28rem;
   border-radius: 50%;
   overflow: hidden;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+  /* Removed the pronounced shadow */
 }
 
 /* Additional Classes for Animation Div based on state */
@@ -145,7 +143,7 @@
   height: 18rem; /* Equivalent to h-72 */
   border-radius: 50%;
   overflow: hidden;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Reduced shadow for subtlety */
   z-index: 10;
   transition: all 0.8s ease-out;
 }
@@ -162,7 +160,6 @@
   margin-bottom: 1rem; /* Increased from 1rem */
   padding-bottom: .5rem; /* Add some extra padding */
 }
-
 
 @media (min-width: 768px) {
   .adjustedHeading {
