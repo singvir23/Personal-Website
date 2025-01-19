@@ -1,6 +1,12 @@
 // src/app/layout.tsx
 import Navbar from './components/Navbar';
-import './globals.css'; // includes Tailwind base, components, utilities
+import './globals.css';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Viraaj Singh',
+  description: 'Personal website of Viraaj Singh',
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -18,7 +24,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
-        {/* Navbar is rendered here, ensuring it's persistent across pages */}
         <Navbar />
         {children}
       </body>
