@@ -143,7 +143,7 @@
   height: 18rem; /* Equivalent to h-72 */
   border-radius: 50%;
   overflow: hidden;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Reduced shadow for subtlety */
+  box-shadow: none; /* Remove shadow on mobile */
   z-index: 10;
   transition: all 0.8s ease-out;
 }
@@ -152,6 +152,7 @@
   .profileImage {
     width: 28rem; /* Equivalent to md:w-[28rem] */
     height: 28rem; /* Equivalent to md:h-[28rem] */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Add shadow on larger screens */
   }
 }
 
