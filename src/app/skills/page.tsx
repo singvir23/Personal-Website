@@ -20,7 +20,7 @@ export default function Skills() {
       { name: 'Next.js', icon: '/icons/next.svg' },
       { name: 'Firebase', icon: '/icons/firebase.svg' },
       { name: 'AWS', icon: '/icons/AWS.svg' },
-      { name: 'JUnit', icon: '/icons/unit.png' },
+      { name: 'JUnit', icon: '/icons/JUnit.svg' },
     ],
     Tools: [
       { name: 'Git', icon: '/icons/git.svg' },
