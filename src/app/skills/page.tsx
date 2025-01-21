@@ -25,7 +25,7 @@ export default function Skills() {
     "Technologies & Tools": [
       { name: 'Git', icon: '/icons/git.svg' },
       { name: 'GCP', icon: '/icons/gcp.svg' },
-      { name: 'AWS', icon: '/icons/aws.svg' },
+      { name: 'AWS', icon: '/icons/AWS.svg' },
       { name: 'Firebase', icon: '/icons/firebase.svg' },
       { name: 'Jupyter Notebook', icon: '/icons/jupyter.svg' },
       { name: 'Ubuntu', icon: '/icons/ubuntu.png' },
