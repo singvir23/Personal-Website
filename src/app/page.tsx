@@ -182,20 +182,6 @@ export default function Home() {
 
               {/* Right Column */}
               <div className="w-full md:w-1/2 flex justify-center md:justify-end relative">
-                {/* Blurred Background */}
-                <motion.div
-                  className={styles.blurredImage}
-                  initial={!skipHomeAnimation ? { scale: 0.8, opacity: 0 } : {}}
-                  animate={!skipHomeAnimation ? { scale: 1, opacity: 1 } : {}}
-                  transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
-                >
-                  <img
-                    src="/viraaj.jpg"
-                    alt="Profile Blurred"
-                    className="w-full h-full object-cover"
-                  />
-                </motion.div>
-
                 {/* Main Profile Image */}
                 <motion.div
                   className={styles.profileImage}
