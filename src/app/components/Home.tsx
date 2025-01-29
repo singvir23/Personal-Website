@@ -17,17 +17,12 @@ interface HomeProps {
 }
 
 export default function Home({ skipAnimation = false }: HomeProps) {
-  const [showContent, setShowContent] = useState(skipAnimation);
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
     window.scrollTo(0, 0);
-
-    if (skipAnimation) {
-      setShowContent(true);
-    }
-  }, [skipAnimation]);
+  }, []);
 
   if (!isMounted) return null;
 
@@ -54,18 +49,17 @@ export default function Home({ skipAnimation = false }: HomeProps) {
           >
             {/* Left Column */}
             <div className="w-full md:w-1/2 text-center md:text-left">
-            <motion.h1
-              className={`text-5xl sm:text-6xl md:text-7xl font-extrabold 
-                            bg-gradient-to-r from-[#2dd4bf] to-[#10b981] 
-                            bg-clip-text text-transparent drop-shadow-lg leading-none mb-4 
-                            ${styles.adjustedHeading} shadowHandFont`}
-              initial={!skipAnimation ? { opacity: 0, y: 20 } : {}}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
-            >
-              Hello, I&apos;m Viraaj
-            </motion.h1>
-
+              <motion.h1
+                className={`text-5xl sm:text-6xl md:text-7xl font-extrabold 
+                          bg-gradient-to-r from-[#2dd4bf] to-[#10b981] 
+                          bg-clip-text text-transparent drop-shadow-lg leading-none mb-4 
+                          ${styles.adjustedHeading} shadowHandFont`}
+                initial={!skipAnimation ? { opacity: 0, y: 20 } : {}}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
+              >
+                Hello, I&apos;m Viraaj
+              </motion.h1>
 
               <motion.p
                 className={`text-lg text-gray-700 leading-relaxed mt-4 ${styles.indentedText}`}
