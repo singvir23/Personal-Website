@@ -12,18 +12,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        {/* Existing Quicksand Font */}
+        {/* Preconnect for Fonts */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Add PT Mono Font */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-        {/* Add Antonio Font */}
-        <link
-          href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body>
+      <body style={{ fontFamily: "'PT Mono', monospace" }}>
         <Navbar />
         {children}
       </body>

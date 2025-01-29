@@ -98,6 +98,9 @@ export default function Projects() {
 
   return (
     <section ref={containerRef} className={styles.projectsContainer}>
+      {/* Projects Header */}
+      <h2 className={styles.projectsHeader}>Projects</h2>
+
       <div className={styles.projectsWrapper}>
         {projects.map((project, index) => (
           <div key={project.title} className={styles.projectCard}>

@@ -36,8 +36,9 @@ export default function Skills() {
 
   return (
     <section className={styles.skillsSection}>
-      <div className={styles.skillsHeader}>
-      </div>
+      {/* Skills Header */}
+      <h2 className={styles.skillsHeader}>Skills</h2>
+
       <div className={styles.skillsContainer}>
         {Object.entries(skills).map(([category, skillList]) => (
           <div key={category} className={styles.category}>

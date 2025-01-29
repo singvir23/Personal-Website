@@ -1,0 +1,61 @@
+/* Import ShadowHand Font */
+@font-face {
+  font-family: 'ShadowHand';
+  src: url('//2ttf.com/webfont/UIswCwhB/webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* Improves font loading performance */
+}
+
+/* Skills Section Styling */
+.skillsSection {
+  padding: 9rem 1rem;
+  min-height: 100vh;
+  background: linear-gradient(
+    to top,
+    #fdfdfd 0%,
+    #f3faf7 40%,
+    #e6f4f1 50%,
+    #d1eae3 100%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Skills Header Styling */
+.skillsHeader {
+  font-family: 'ShadowHand', cursive; /* Same font as Projects Header */
+  text-align: center; /* Centers the text horizontally */
+  font-size: 5rem; /* Same font size as Projects Header */
+  margin-top: -2.5rem;
+  margin-bottom: 1rem; /* Space below the header */
+  color: #333; /* Same color as Projects Header */
+}
+
+/* Skills Container */
+.skillsContainer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.category {
+  margin-bottom: 3rem;
+}
+
+.categoryTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #4a5568;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.skillsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}

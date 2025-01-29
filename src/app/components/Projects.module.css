@@ -1,29 +1,37 @@
 /* Projects.module.css */
 
+/* Import ShadowHand Font */
+@font-face {
+  font-family: 'ShadowHand';
+  src: url('//2ttf.com/webfont/UIswCwhB/webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* Improves font loading performance */
+}
+
 /* Projects Container with Subtle Gradient Background */
 .projectsContainer {
-  background: linear-gradient(
-      to bottom,
-      #fdfdfd 0%, /* Light neutral tone for navbar */
-      #f3faf7 40%, /* Very soft mint green */
-      #e6f4f1 50%, /* Subtle green blend */
-      #d1eae3 100% /* Low-key green tone */
-    ),
-    radial-gradient(
-      circle at top right,
-      rgba(255, 255, 255, 0.6) 0%, /* Increased transparency */
-      rgba(243, 250, 247, 0.2) 50%, /* Soft green tint */
-      rgba(210, 234, 227, 0.1) 100% /* Low opacity green */
-    );
+  background: #d1eae3 100%;
   background-blend-mode: overlay;
-  padding: 5rem 2rem; /* Increased horizontal padding */
+  padding: 2rem 2rem; /* Increased horizontal padding */
   overflow-x: hidden;
   font-family: 'Quicksand', sans-serif;
   min-height: 100vh;
   width: 100%;
   display: flex;
-  align-items: flex-start; /* Align to start for better flow */
+  flex-direction: column; /* Stacks header above project cards */
+  align-items: center; /* Centers child elements horizontally */
   justify-content: center;
+}
+
+/* Header Styling */
+.projectsHeader {
+  font-family: 'ShadowHand', cursive; /* Fallback to cursive if the font fails to load */
+  text-align: center; /* Centers the text horizontally */
+  font-size: 5rem; /* Adjust the size as needed (e.g., 4rem, 5rem) */
+  margin-top: 4rem;
+  margin-bottom: -1.45rem; /* Space below the header */
+  color: #333; /* Adjust the color as needed */
 }
 
 /* Projects Wrapper Grid */
@@ -52,8 +60,8 @@
   .projectsWrapper {
     max-width: 120rem; /* Further increase max-width */
     grid-template-columns: 1fr 1fr; /* Maintain two columns */
-    column-gap: 3rem;
-    row-gap: 3rem;
+    column-gap: 1.5rem;
+    row-gap: 1.5rem;
   }
 }
 
@@ -64,7 +72,7 @@
   background: rgba(255, 255, 255, 0.95); /* Slightly more opaque */
   backdrop-filter: blur(6px); /* Subtle blur */
   border-radius: 0.75rem;
-  padding: 1.5rem; /* Increased padding for larger cards */
+  padding: 1rem; /* Increased padding for larger cards */
   box-shadow: 
     0 6px 12px rgba(0, 0, 0, 0.05),
     0 3px 6px rgba(0, 0, 0, 0.02);
@@ -83,7 +91,7 @@
 .projectContent {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 1rem;
   width: 100%;
 }
 

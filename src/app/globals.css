@@ -21,3 +21,12 @@ body {
   font-family: 'Quicksand', sans-serif;
   background-color: #fdfdfd;
 }
+
+@font-face {
+  font-family: 'ShadowHand';
+  src: url('//2ttf.com/webfont/UIswCwhB/webfont.ttf') format('truetype');
+}
+
+.shadowHandFont {
+  font-family: 'ShadowHand', sans-serif; /* Fallback font */
+}
