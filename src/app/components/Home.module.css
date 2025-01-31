@@ -1,11 +1,7 @@
-/* components/Home.module.css */
-
-:root {
-  --highlight-hue: #2dd4bf; /* Define the highlight hue matching "Viraaj Singh" */
-}
 
 .container {
   min-height: 100vh;
+  --highlight-hue: #2dd4bf; /* Define the highlight hue matching "Viraaj Singh" */
   background-color: #fdfdfd;
   display: flex;
   align-items: center;
