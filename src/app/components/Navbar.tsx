@@ -1,7 +1,7 @@
-// Updated Navbar Component
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
@@ -17,7 +17,7 @@ export default function Navbar() {
 
   const navItems: NavItem[] = [
     { name: "Home", path: "#home" },
-    { name: "About", path: "#about" }, // Added About section
+    { name: "About", path: "#about" },
     { name: "Projects", path: "#projects" },
     { name: "Skills", path: "#skills" },
   ];
@@ -36,14 +36,12 @@ export default function Navbar() {
 
   if (!isMounted) return null;
 
-  // Smooth Scroll Function
   const handleNavItemClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
     e.preventDefault();
     const targetElement = document.querySelector(path);
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: "smooth" });
     }
-    // Close mobile menu if open
     if (isMobileMenuOpen) {
       setIsMobileMenuOpen(false);
     }
@@ -57,19 +55,21 @@ export default function Navbar() {
     >
       <div className="w-full flex justify-between items-center px-6">
         {/* Logo */}
-        <a href="#home" aria-label="Go to Home">
-          <div className="w-16 h-16 z-[60] cursor-pointer transition-opacity duration-300">
-            <img
+        <a href="#home" aria-label="Go to Home" className="flex-shrink-0">
+          <div className="w-16 h-16 z-[60] cursor-pointer transition-opacity duration-300 relative">
+            <Image
               src="/finalscreen.png"
               alt="Navbar Logo"
-              className="w-full h-full object-cover rounded-full"
+              width={64}
+              height={64}
+              className="object-cover rounded-full"
             />
           </div>
         </a>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center flex-1 relative ml-8">
-          <div className="flex justify-center gap-6 flex-1 relative">
+        <div className="hidden md:flex items-center justify-center flex-1">
+          <div className="flex gap-6">
             {navItems.map((item) => (
               <div key={item.path}>
                 <a
@@ -93,8 +93,11 @@ export default function Navbar() {
           </div>
         </div>
 
+        {/* Placeholder div to balance the layout */}
+        <div className="w-16 flex-shrink-0 hidden md:block"></div>
+
         {/* Mobile Menu Button */}
-        <div className="md:hidden relative">
+        <div className="md:hidden">
           <button
             onClick={() => setIsMobileMenuOpen((prev) => !prev)}
             className="p-2 text-gray-600 hover:text-gray-800 focus:outline-none"

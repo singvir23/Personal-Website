@@ -1,5 +1,8 @@
+"use client";
+
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 
@@ -78,10 +81,11 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
                 {project.workflowImage && (
                   <div className="relative w-full h-96 mb-6 rounded-lg overflow-hidden bg-gray-100">
-                    <img
+                    <Image
                       src={project.workflowImage}
                       alt={`${project.title} workflow`}
-                      className="w-full h-full object-contain rounded-lg"
+                      fill
+                      className="object-contain rounded-lg"
                       loading="lazy"
                     />
                   </div>
