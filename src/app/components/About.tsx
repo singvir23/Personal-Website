@@ -30,13 +30,13 @@ export default function AboutSection() {
           
           <div className={styles.textContent}>
             <p className={styles.description}>
-              Hi there! I'm a passionate Computer Science student at the University of Maryland, 
+              Hi there! I&apos;m a passionate Computer Science student at the University of Maryland, 
               where I blend technical expertise with creative storytelling. My journey in tech 
               is driven by a desire to create meaningful and innovative solutions.
             </p>
             
             <p className={styles.description}>
-              When I'm not coding, you can find me exploring the intersection of technology 
+              When I&apos;m not coding, you can find me exploring the intersection of technology 
               and digital narratives, working on personal projects, or learning about the 
               latest developments in software engineering.
             </p>
