@@ -1,13 +1,12 @@
-// Projects.tsx
-
 "use client";
 
 import React, { useRef, useState, memo } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Github, ExternalLink } from 'lucide-react';
 import { ProjectModal, Project } from './ProjectModal';
 import { Tooltip } from 'react-tooltip';
-import 'react-tooltip/dist/react-tooltip.css'; 
+import 'react-tooltip/dist/react-tooltip.css';
 import styles from './Projects.module.css';
 
 // Define types for tech icons
@@ -113,41 +112,48 @@ const TechIcon = memo(({ tech, index }: { tech: string; index: number }) => {
       data-tooltip-id={`tooltip-${tech}-${index}`}
       data-tooltip-content={tech}
     >
-      <img
+      <Image
         src={techIcons[tech].src}
         alt={tech}
         className={`${styles.techIcon} ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
         loading="lazy"
-        onLoad={() => setIsLoaded(true)}
+        onLoadingComplete={() => setIsLoaded(true)}
+        width={32} // Adjust width as needed
+        height={32} // Adjust height as needed
       />
       <Tooltip id={`tooltip-${tech}-${index}`} place="top" variant="dark" />
     </motion.div>
   );
 });
+TechIcon.displayName = 'TechIcon';
 
 const ProjectImage = memo(({ project }: { project: Project }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
     <div className={styles.imageContainer}>
-      <motion.img
-        src={project.image}
-        alt={project.title}
-        className={`
-          ${styles.projectImage} 
-          ${project.title === 'AI Drum Lick Generator' ? styles.drumAIImage :
-            project.title === 'News Webscraper' ? styles.newsWebscraperImage : ''}
-          ${isLoaded ? 'opacity-100' : 'opacity-0'}
-        `}
-        loading="lazy"
-        onLoad={() => setIsLoaded(true)}
-      />
+      <motion.div className={`${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+        <Image
+          src={project.image}
+          alt={project.title}
+          className={`
+            ${styles.projectImage} 
+            ${project.title === 'AI Drum Lick Generator' ? styles.drumAIImage :
+              project.title === 'News Webscraper' ? styles.newsWebscraperImage : ''}
+          `}
+          loading="lazy"
+          onLoadingComplete={() => setIsLoaded(true)}
+          width={600} // Adjust width as needed
+          height={400} // Adjust height as needed
+        />
+      </motion.div>
       {!isLoaded && (
         <div className="animate-pulse bg-gray-200 w-full h-full absolute top-0 left-0" />
       )}
     </div>
   );
 });
+ProjectImage.displayName = 'ProjectImage';
 
 const ProjectCard = memo(({ project, index, onSelect }: { 
   project: Project; 
@@ -188,6 +194,7 @@ const ProjectCard = memo(({ project, index, onSelect }: {
     </div>
   );
 });
+ProjectCard.displayName = 'ProjectCard';
 
 const ProjectLinks = memo(({ github, demo }: { github: string; demo: string }) => (
   <div className={styles.projectLinks}>
@@ -213,6 +220,7 @@ const ProjectLinks = memo(({ github, demo }: { github: string; demo: string }) =
     </motion.a>
   </div>
 ));
+ProjectLinks.displayName = 'ProjectLinks';
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
