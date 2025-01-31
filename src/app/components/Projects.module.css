@@ -1,125 +1,98 @@
 /* Projects.module.css */
 
-/* Import ShadowHand Font */
-@font-face {
-  font-family: 'ShadowHand';
-  src: url('//2ttf.com/webfont/UIswCwhB/webfont.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap; /* Improves font loading performance */
-}
-
-/* Projects Container with Subtle Gradient Background */
+/* Projects Container with Updated Background */
 .projectsContainer {
-  background: #d1eae3 100%;
-  background-blend-mode: overlay;
-  padding: 2rem 2rem; /* Increased horizontal padding */
-  overflow-x: hidden;
-  font-family: 'Quicksand', sans-serif;
+  background: #fdfdfd;
+  padding: 2rem 0;
+  overflow: hidden;
   min-height: 100vh;
   width: 100%;
   display: flex;
-  flex-direction: column; /* Stacks header above project cards */
-  align-items: center; /* Centers child elements horizontally */
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  perspective: 1000px;
+  will-change: transform;
 }
 
-/* Header Styling */
+/* Header Styling with New Text Effects */
 .projectsHeader {
-  font-family: 'ShadowHand', cursive; /* Fallback to cursive if the font fails to load */
-  text-align: center; /* Centers the text horizontally */
-  font-size: 5rem; /* Adjust the size as needed (e.g., 4rem, 5rem) */
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
   margin-top: 4rem;
-  margin-bottom: -1.45rem; /* Space below the header */
-  color: #333; /* Adjust the color as needed */
+  margin-bottom: 4rem;
+  color: black;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fdfdfd;
+  padding: 2rem 0;
+  text-shadow: 
+    0 0 15px rgba(45, 212, 191, 0.5),
+    0 0 25px rgba(16, 185, 129, 0.3);
 }
 
-/* Projects Wrapper Grid */
+/* Projects Wrapper for Single Column Layout */
 .projectsWrapper {
-  padding-top: 30px;
-  display: grid;
-  grid-template-columns: 1fr;
-  column-gap: 0.5rem;
-  row-gap: 0.5rem;
-  max-width: 100rem; /* Increased max-width for larger screens */
   width: 100%;
+  max-width: 90rem;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
+  padding: 0 2rem;
 }
 
-/* Medium Screens: Two Columns */
-@media (min-width: 768px) {
-  .projectsWrapper {
-    grid-template-columns: 1fr 1fr;
-    column-gap: 2.5rem;
-    row-gap: 2.5rem;
-  }
-}
-
-/* Large Screens: Ensure 2x2 Grid and Fill Space */
-@media (min-width: 1280px) {
-  .projectsWrapper {
-    max-width: 120rem; /* Further increase max-width */
-    grid-template-columns: 1fr 1fr; /* Maintain two columns */
-    column-gap: 1.5rem;
-    row-gap: 1.5rem;
-  }
-}
-
-/* Project Card Styling */
+/* Project Card Styling with Combined Green and Black Shadows */
 .projectCard {
   position: relative;
   width: 100%;
-  background: rgba(255, 255, 255, 0.95); /* Slightly more opaque */
-  backdrop-filter: blur(6px); /* Subtle blur */
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 0.75rem;
-  padding: 1rem; /* Increased padding for larger cards */
+  padding: 2rem;
   box-shadow: 
-    0 6px 12px rgba(0, 0, 0, 0.05),
-    0 3px 6px rgba(0, 0, 0, 0.02);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+    0 4px 6px rgba(0, 0, 0, 0.1),
+    0 2px 4px rgba(0, 0, 0, 0.06),
+    0 0 20px rgba(144, 238, 144, 0.1),
+    0 0 40px rgba(144, 238, 144, 0.05);
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  will-change: transform;
 }
 
-/* Hover Effect on Project Card */
+/* Project Card Hover Effect */
 .projectCard:hover {
-  transform: translateY(-5px); /* Slight upward movement */
+  transform: translateY(-10px) scale(1.02);
   box-shadow: 
-    0 12px 24px rgba(0, 0, 0, 0.05),
-    0 6px 12px rgba(0, 0, 0, 0.02);
+    0 10px 15px rgba(0, 0, 0, 0.1),
+    0 4px 6px rgba(0, 0, 0, 0.05),
+    0 0 30px rgba(144, 238, 144, 0.2),
+    0 0 60px rgba(144, 238, 144, 0.1);
 }
 
-/* Project Content Styling */
+/* Project Content Grid Layout */
 .projectContent {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
-  width: 100%;
+  gap: 2rem;
 }
 
-/* Medium Screens: Two Columns in Project Content */
 @media (min-width: 768px) {
   .projectContent {
     grid-template-columns: 1fr 1fr;
+    align-items: center;
   }
 }
 
-/* Image Container Styling */
+/* Image Container with Parallax Effect */
 .imageContainer {
   position: relative;
   overflow: hidden;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   width: 100%;
-  height: 250px; /* Increased height for better proportions */
-  display: flex; /* Added flex display */
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
-}
-
-/* Specific Styling for AI Drum Lick Generator Image */
-.drumAIImage {
-  object-fit: contain;
-  width: 100%;
-  height: 100%;
-  padding: 1rem; /* Add some padding to prevent image from touching edges */
+  height: 400px;
+  transform-style: preserve-3d;
+  transform: translateZ(0);
 }
 
 /* Project Image Styling */
@@ -127,76 +100,74 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center; /* Ensure image is centered */
-  transition: transform 0.3s ease;
+  object-position: center;
+  transition: transform 0.5s ease;
+  transform: translateZ(20px);
+  will-change: transform;
 }
 
-/* Hover Effect on Project Image */
-.projectCard:hover .projectImage {
-  transform: scale(1.05); /* Slight zoom on hover */
+/* Specific Image Styles */
+.drumAIImage {
+  object-fit: contain;
+  padding: 1rem;
 }
 
-/* New Styling for News Webscraper Image */
 .newsWebscraperImage {
-  width: 100%; /* Full width on small screens */
-  height: auto; /* Adjust height based on image aspect ratio */
+  width: 100%;
+  height: auto;
 }
 
-@media (min-width: 768px) {
-  .newsWebscraperImage {
-    width: 80%; /* 50% width on medium and larger screens */
-  }
-}
-
-/* Project Details Styling */
+/* Project Details Container */
 .projectDetails {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
+  transform: translateZ(30px);
 }
 
-/* Project Title Styling */
+/* Project Title */
 .projectTitle {
-  font-size: 1.75rem; /* Increased font size for prominence */
+  font-size: 2rem;
   font-weight: 600;
   color: #1F2937;
+  margin-bottom: 0.5rem;
 }
 
-/* Project Description Styling */
+/* Project Description */
 .projectDescription {
   color: #4B5563;
-  line-height: 1.6;
-  font-size: 1.05rem; /* Slightly larger font for readability */
+  line-height: 1.8;
+  font-size: 1.1rem;
 }
 
-/* Tech Stack Styling */
+/* Tech Stack Layout */
 .techStack {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
 }
 
-/* Tech Icon Wrapper for Custom Tooltip */
+/* Tech Icon Styling */
 .techIconWrapper {
   position: relative;
-  width: 20px; /* Slightly smaller size */
-  height: 20px;
+  width: 24px;
+  height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transform: translateZ(40px);
+  will-change: transform;
 }
 
-/* Tech Icon Styling */
 .techIcon {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-/* Custom Tooltip Styles */
+/* Tooltip Styles */
 .techIconWrapper::after {
   content: attr(data-tooltip);
   position: absolute;
@@ -205,13 +176,13 @@
   transform: translateX(-50%);
   background-color: rgba(0, 0, 0, 0.75);
   color: #fff;
-  padding: 3px 6px;
-  border-radius: 3px;
+  padding: 4px 8px;
+  border-radius: 4px;
   white-space: nowrap;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+  transition: all 0.2s ease;
   z-index: 10;
 }
 
@@ -225,8 +196,7 @@
   border-style: solid;
   border-color: rgba(0, 0, 0, 0.75) transparent transparent transparent;
   opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease-in-out;
+  transition: all 0.2s ease;
   z-index: 10;
 }
 
@@ -236,33 +206,40 @@
   transform: translateX(-50%) translateY(-3px);
 }
 
-/* Project Links Styling */
+/* Project Links Container */
 .projectLinks {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
+  transform: translateZ(40px);
 }
 
-/* GitHub and Demo Link Styling */
+/* Link Styling */
 .githubLink,
 .demoLink {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  transition: color 0.2s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
 }
 
 .githubLink {
   color: #059669;
+  background: rgba(5, 150, 105, 0.1);
 }
 
 .demoLink {
   color: #10B981;
+  background: rgba(16, 185, 129, 0.1);
 }
 
 .githubLink:hover {
   color: #047857;
+  background: rgba(5, 150, 105, 0.2);
 }
 
 .demoLink:hover {
   color: #059669;
+  background: rgba(16, 185, 129, 0.2);
 }

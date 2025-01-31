@@ -17,6 +17,7 @@ export default function Navbar() {
 
   const navItems: NavItem[] = [
     { name: "Home", path: "#home" },
+    { name: "About", path: "#about" }, // Added About section
     { name: "Projects", path: "#projects" },
     { name: "Skills", path: "#skills" },
   ];

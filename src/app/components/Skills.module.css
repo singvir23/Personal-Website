@@ -1,61 +1,139 @@
-/* Import ShadowHand Font */
-@font-face {
-  font-family: 'ShadowHand';
-  src: url('//2ttf.com/webfont/UIswCwhB/webfont.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap; /* Improves font loading performance */
-}
-
-/* Skills Section Styling */
+/* Skills Container, mirroring Projects layout */
 .skillsSection {
-  padding: 9rem 1rem;
+  background: #fdfdfd;
+  padding: 2rem 0;
+  overflow: hidden;
   min-height: 100vh;
-  background: linear-gradient(
-    to top,
-    #fdfdfd 0%,
-    #f3faf7 40%,
-    #e6f4f1 50%,
-    #d1eae3 100%
-  );
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  perspective: 1000px;
+  will-change: transform;
 }
 
-/* Skills Header Styling */
+/* Header Styling: matches Projects header text effects */
 .skillsHeader {
-  font-family: 'ShadowHand', cursive; /* Same font as Projects Header */
-  text-align: center; /* Centers the text horizontally */
-  font-size: 5rem; /* Same font size as Projects Header */
-  margin-top: -2.5rem;
-  margin-bottom: 1rem; /* Space below the header */
-  color: #333; /* Same color as Projects Header */
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  color: black;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fdfdfd;
+  padding: 2rem 0;
+  text-shadow:
+    0 0 15px rgba(45, 212, 191, 0.5),
+    0 0 25px rgba(16, 185, 129, 0.3);
 }
 
-/* Skills Container */
-.skillsContainer {
+/* Wrapper for the skill “cards” (categories) */
+.skillsWrapper {
   width: 100%;
-  max-width: 1200px;
+  max-width: 90rem;
   margin: 0 auto;
-  padding: 0 1rem;
+  display: flex;
+  flex-direction: row; /* Changed from column to row */
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  gap: 4rem; /* Adjust spacing between categories */
+  padding: 0 2rem;
+  justify-content: center; /* Centers the categories horizontally */
 }
 
-.category {
-  margin-bottom: 3rem;
+/* Each category displayed as a “card” similar to .projectCard */
+.skillCategoryCard {
+  position: relative;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 0.75rem;
+  padding: 2rem;
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.1),
+    0 2px 4px rgba(0, 0, 0, 0.06),
+    0 0 20px rgba(144, 238, 144, 0.1),
+    0 0 40px rgba(144, 238, 144, 0.05);
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  will-change: transform;
+  flex: 1 1 300px; /* Allows the card to grow and shrink with a base width */
+  max-width: 30%; /* Ensures up to 3 cards per row on large screens */
 }
 
-.categoryTitle {
+/* Hover effect on card */
+.skillCategoryCard:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow:
+    0 10px 15px rgba(0, 0, 0, 0.1),
+    0 4px 6px rgba(0, 0, 0, 0.05),
+    0 0 30px rgba(144, 238, 144, 0.2),
+    0 0 60px rgba(144, 238, 144, 0.1);
+}
+
+/* Category title inside the card */
+.skillCategoryHeader {
   font-size: 1.75rem;
   font-weight: 700;
-  color: #4a5568;
+  color: #1F2937;
   text-align: center;
   margin-bottom: 1.5rem;
 }
 
-.skillsGrid {
+/* Skills layout (similar to .techStack) */
+.skillCategoryGrid {
   display: flex;
   flex-wrap: wrap;
+  gap: 1.5rem;
   justify-content: center;
-  gap: 2rem;
+}
+
+/* Skill icon wrapper, similar to .techIconWrapper */
+.skillIconWrapper {
+  position: relative;
+  width: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  will-change: transform;
+}
+
+.skillIconWrapper:hover {
+  transform: scale(1.1);
+}
+
+/* Icon styling, parallels .techIcon */
+.skillIcon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-bottom: 0.25rem;
+}
+
+/* Skill name text */
+.skillName {
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #4B5563;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .skillCategoryCard {
+    max-width: 45%; /* Two cards per row */
+  }
+}
+
+@media (max-width: 768px) {
+  .skillsWrapper {
+    flex-direction: column; /* Stack vertically on small screens */
+    align-items: center;
+  }
+
+  .skillCategoryCard {
+    max-width: 80%; /* Full width on small screens */
+  }
 }

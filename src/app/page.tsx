@@ -2,42 +2,60 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Head from 'next/head';
 import Navbar from "./components/Navbar";
 import HomeSection from "./components/Home";
 import ProjectsSection from "./components/Projects";
 import SkillsSection from "./components/Skills";
+import AboutSection from "./components/About";
+
+// Preload images hook (only truly critical images)
+const usePreloadImages = (imageUrls: string[]) => {
+  useEffect(() => {
+    imageUrls.forEach((url) => {
+      const img = new Image();
+      img.src = url;
+    });
+  }, [imageUrls]);
+};
 
 export default function Page() {
   const [showContent, setShowContent] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [logoPosition, setLogoPosition] = useState<"center" | "navbar">("center");
   const [showNav, setShowNav] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(true);
+
+  // Preload only the large hero images or critical content you want immediately
+  usePreloadImages([
+    '/drumAI.jpeg',
+    '/server.jpeg',
+    '/cnn.png',
+    '/chatbot.png',
+    // Remove icon preloads so they load only when needed
+  ]);
 
   useEffect(() => {
     setIsMounted(true);
     window.scrollTo(0, 0);
-    document.body.style.overflow = "hidden"; // Prevent scrolling during animation
+    document.body.style.overflow = "hidden";
 
-    const hasAnimated = localStorage.getItem("introRan");
-    if (hasAnimated === "true") {
-      setShowContent(true);
-      setLogoPosition("navbar");
-      setShowNav(true);
-      document.body.style.overflow = "auto"; // Re-enable scrolling
-    }
+    // Ensure animation plays every time.
+    setShowContent(false);
+    setLogoPosition("center");
+    setShowNav(false);
   }, []);
 
   const handleVideoEnd = () => {
     setTimeout(() => {
       setLogoPosition("navbar");
-      
       setTimeout(() => {
-        setShowNav(true); // Show navbar before content
-        
+        setShowNav(true);
         setTimeout(() => {
           setShowContent(true);
-          localStorage.setItem("introRan", "true");
-          document.body.style.overflow = "auto"; // Re-enable scrolling
+          setIsAnimating(false);
+          document.body.style.overflow = "auto";
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }, 200);
       }, 800);
     }, 800);
@@ -47,8 +65,29 @@ export default function Page() {
 
   return (
     <>
-      {/* Intro Animation */}
-      <AnimatePresence>
+      <Head>
+        {/* Only preload the images actually needed above-the-fold 
+            and remove non-critical icon preloads */}
+        <link rel="preload" href="/drumAI.jpeg" as="image" />
+        <link rel="preload" href="/server.jpeg" as="image" />
+        <link rel="preload" href="/cnn.png" as="image" />
+        <link rel="preload" href="/chatbot.png" as="image" />
+      </Head>
+
+      {isAnimating && (
+        <div 
+          className="fixed inset-0 z-[999] bg-transparent" 
+          style={{ pointerEvents: "all" }}
+          onClick={(e) => e.preventDefault()}
+          onMouseDown={(e) => e.preventDefault()}
+          onMouseUp={(e) => e.preventDefault()}
+          onKeyDown={(e) => e.preventDefault()}
+          onKeyUp={(e) => e.preventDefault()}
+          tabIndex={-1}
+        />
+      )}
+
+      <AnimatePresence mode="wait">
         {!showContent && (
           <motion.div
             className="fixed inset-0 bg-[#fdfdfd] z-50 flex items-center justify-center"
@@ -99,37 +138,29 @@ export default function Page() {
         )}
       </AnimatePresence>
 
-      {/* Navbar */}
-      <AnimatePresence>
-        {showNav && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Navbar />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div className="relative">
+        <div className={`${showNav ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500`}>
+          <Navbar />
+        </div>
 
-      {/* Main Content */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: showContent ? 1 : 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <section id="home">
-          <HomeSection skipAnimation={true} />
-        </section>
-
-        <section id="projects">
-          <ProjectsSection />
-        </section>
-
-        <section id="skills">
-          <SkillsSection />
-        </section>
-      </motion.div>
+        <div 
+          className={`${showContent ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500`}
+          style={{ pointerEvents: isAnimating ? 'none' : 'auto' }}
+        >
+          <section id="home">
+            <HomeSection skipAnimation={true} />
+          </section>
+          <section id="about">
+            <AboutSection />
+          </section>
+          <section id="projects">
+            <ProjectsSection />
+          </section>
+          <section id="skills">
+            <SkillsSection />
+          </section>
+        </div>
+      </div>
     </>
   );
 }

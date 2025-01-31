@@ -1,144 +1,75 @@
-/* Animation Div Styles */
-.animationDiv {
-  position: fixed;
-  z-index: 100;
-  overflow: hidden;
-  display: block; /* Controlled via conditional rendering */
+/* components/Home.module.css */
+
+:root {
+  --highlight-hue: #2dd4bf; /* Define the highlight hue matching "Viraaj Singh" */
 }
 
-.blurEffect {
-  backdrop-filter: blur(10px);
-}
-
-.noBlurEffect {
-  backdrop-filter: none;
-}
-
-/* Video Styles */
-.logoVideo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-}
-
-/* Profile Image Container Styles */
-.profileImageContainer {
-  width: 28rem;
-  height: 28rem;
-  border-radius: 50%;
-  overflow: hidden;
-  /* Removed the pronounced shadow */
-}
-
-/* Additional Classes for Animation Div based on state */
-.hiddenAnimation {
-  display: none;
-}
-
-.gradientBackground {
+.container {
   min-height: 100vh;
-  width: 100%;
+  background-color: #fdfdfd;
   display: flex;
-  align-items: center; /* Vertically center */
-  justify-content: center; /* Horizontally center */
-  background: linear-gradient(
-    to top,
-    #fdfdfd 0%,
-    #f3faf7 40%,
-    #e6f4f1 50%,
-    #d1eae3 100%
-  );
-  background-blend-mode: overlay;
-}
-
-.mainContent {
-  width: 100%;
-  max-width: 1400px; /* Increased from 1200px to 1400px */
-  padding: 4rem; /* Increased padding from 3rem to 4rem */
-  display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
-/* Flex Container for Text and Image */
-.contentFlex {
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-  gap: 2rem; /* Reduced gap */
-  margin-top: 4rem; /* Push content down */
+.content {
+  text-align: center;
 }
 
-@media (min-width: 768px) {
-  .contentFlex {
-    flex-direction: row;
-    justify-content: space-between;
-  }
+.nameText {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: black;
+  text-shadow: 0 0 15px rgba(45, 212, 191, 0.5), /* rgba(45, 212, 191, 0.5) = #2dd4bf with 0.5 opacity */
+               0 0 25px rgba(16, 185, 129, 0.3); /* rgba(16, 185, 129, 0.3) = #10b981 with 0.3 opacity */
 }
 
+.description {
+  font-size: 1.25rem;
+  color: #374151;
+  max-width: 36rem;
+  margin: 0 auto;
+  min-height: 4rem;
+}
+
+/* Highlighted text with subtle outline */
 .highlight {
-  color: #10b981; /* Tailwind's emerald-600 */
+  color: #374151; /* Maintain original text color */
+  /* Apply a subtle text stroke using the highlight hue */
+  -webkit-text-stroke: 0.5px var(--highlight-hue); /* 0.5px stroke for a lowkey outline */
+  /* Fallback for browsers that do not support text-stroke */
+  text-shadow:
+    0.5px 0.5px 0 var(--highlight-hue),
+    -0.5px 0.5px 0 var(--highlight-hue),
+    0.5px -0.5px 0 var(--highlight-hue),
+    -0.5px -0.5px 0 var(--highlight-hue);
 }
 
-.contactIcons a {
-  color: #374151; /* Tailwind's gray-700 */
+.socialLinks {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.socialLink {
+  color: #374151;
   transition: all 0.3s ease;
 }
 
-.contactIcons a:hover {
-  color: #10b981; /* Tailwind's emerald-600 */
-  transform: scale(1.1); /* Slight enlarge on hover */
+.socialLink:hover {
+  color: #10b981;
+  transform: scale(1.1);
 }
 
-/* Main Profile Image */
-.profileImage {
-  position: relative;
-  width: 18rem; /* Equivalent to w-72 */
-  height: 18rem; /* Equivalent to h-72 */
-  border-radius: 50%;
-  overflow: hidden;
-  z-index: 10;
-  transition: all 0.8s ease-out;
-}
-
-@media (min-width: 768px) {
-  .profileImage {
-    width: 28rem; /* Equivalent to md:w-[28rem] */
-    height: 28rem; /* Equivalent to md:h-[28rem] */
+@media (max-width: 768px) {
+  .nameText {
+    font-size: 4rem;
   }
-}
-
-/* Adjust Heading Position */
-.adjustedHeading {
-  padding-top: .5rem;
-  padding-left: .5rem;
-  margin-bottom: 1rem; /* Increased from 1rem */
-}
-
-@media (min-width: 768px) {
-  .adjustedHeading {
-    margin-bottom: 2rem; /* Moves the heading up by 2rem on larger screens */
-  }
-}
-
-.indentedText {
-  padding-top: -.5rem;
-  font-size: 1.5rem;
-  padding-left: 1rem; /* Adds left padding to subsequent lines */
-}
-
-.indentedIcons {
-  padding-left: 1rem;
-}
-
-/* Optional: Increase Font Size for Heading */
-.adjustedHeading h1 {
-  font-size: 3rem; /* Increase as needed */
-}
-
-@media (min-width: 768px) {
-  .adjustedHeading h1 {
-    font-size: 4rem; /* Larger font size on bigger screens */
+  
+  .description {
+    font-size: 1rem;
+    max-width: 20rem;
   }
 }
