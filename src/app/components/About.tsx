@@ -1,4 +1,3 @@
-// components/About.tsx
 import React from "react";
 import { motion } from "framer-motion";
 import styles from "./About.module.css";
@@ -21,49 +20,24 @@ export default function AboutSection() {
               src="./sideProfileNoBackground.png" // Add your profile image here
               alt="Profile"
               className={styles.image}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, scale: 0.8, x: -10 }}
+              whileInView={{ opacity: 1, scale: 1, x: 10 }} // Slight shift to the right
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             />
+            <div className={styles.greenGlow}></div> {/* Green glow effect */}
           </div>
           
           <div className={styles.textContent}>
             <p className={styles.description}>
-              Hi there! I&apos;m a passionate Computer Science student at the University of Maryland, 
-              where I blend technical expertise with creative storytelling. My journey in tech 
-              is driven by a desire to create meaningful and innovative solutions.
+              Hello, and welcome to my portfolio!
             </p>
-            
             <p className={styles.description}>
-              When I&apos;m not coding, you can find me exploring the intersection of technology 
-              and digital narratives, working on personal projects, or learning about the 
-              latest developments in software engineering.
+              I&apos;m Viraaj, a developer and student at the University of Maryland with a passion for building software. Whether it be creating immersive digital stories, building tools for drummers, or optimizing business processes, I love to apply my software skills in creative and practical ways. I enjoy a challenge and am always looking for new ways to apply my software expertise.
             </p>
-            
-            <div className={styles.interests}>
-              <h3 className={styles.subtitle}>Interests</h3>
-              <div className={styles.interestTags}>
-                {[
-                  "Web Development",
-                  "UI/UX Design",
-                  "Digital Storytelling",
-                  "Software Engineering",
-                  "Creative Computing"
-                ].map((interest, index) => (
-                  <motion.span 
-                    key={index}
-                    className={styles.tag}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    {interest}
-                  </motion.span>
-                ))}
-              </div>
-            </div>
+            <p className={styles.description}>
+              Aside from coding, I am an avid drummer and frequent traveler.
+            </p>
           </div>
         </div>
       </motion.div>
