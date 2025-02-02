@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Head from 'next/head';
+import Head from "next/head";
 import Navbar from "./components/Navbar";
 import HomeSection from "./components/Home";
 import ProjectsSection from "./components/Projects";
@@ -28,16 +28,17 @@ export default function Page() {
 
   // Preload only the large hero images or critical content you want immediately
   usePreloadImages([
-    '/drumAI.jpeg',
-    '/server.jpeg',
-    '/cnn.png',
-    '/chatbot.png',
+    "/drumAI.jpeg",
+    "/server.jpeg",
+    "/cnn.png",
+    "/chatbot.png",
     // Remove icon preloads so they load only when needed
   ]);
 
   useEffect(() => {
     setIsMounted(true);
     window.scrollTo(0, 0);
+    // Lock scrolling via CSS
     document.body.style.overflow = "hidden";
 
     // Ensure animation plays every time.
@@ -45,6 +46,43 @@ export default function Page() {
     setLogoPosition("center");
     setShowNav(false);
   }, []);
+
+  // Prevent scroll events while animating.
+  useEffect(() => {
+    if (!isAnimating) return;
+
+    const preventDefault = (e: Event) => {
+      e.preventDefault();
+    };
+
+    const preventKeyScroll = (e: KeyboardEvent) => {
+      // List of keys that can cause scrolling
+      const keys = [
+        "ArrowUp",
+        "ArrowDown",
+        "PageUp",
+        "PageDown",
+        "Home",
+        "End",
+        " ",
+      ];
+      if (keys.includes(e.key)) {
+        e.preventDefault();
+      }
+    };
+
+    // Add event listeners to prevent scrolling.
+    window.addEventListener("wheel", preventDefault, { passive: false });
+    window.addEventListener("touchmove", preventDefault, { passive: false });
+    window.addEventListener("keydown", preventKeyScroll, { passive: false });
+
+    // Clean up the listeners when animation is done or the component unmounts.
+    return () => {
+      window.removeEventListener("wheel", preventDefault);
+      window.removeEventListener("touchmove", preventDefault);
+      window.removeEventListener("keydown", preventKeyScroll);
+    };
+  }, [isAnimating]);
 
   const handleVideoEnd = () => {
     setTimeout(() => {
@@ -54,8 +92,9 @@ export default function Page() {
         setTimeout(() => {
           setShowContent(true);
           setIsAnimating(false);
+          // Unlock scrolling after animation is finished.
           document.body.style.overflow = "auto";
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          window.scrollTo({ top: 0, behavior: "smooth" });
         }, 200);
       }, 800);
     }, 800);
@@ -75,8 +114,8 @@ export default function Page() {
       </Head>
 
       {isAnimating && (
-        <div 
-          className="fixed inset-0 z-[999] bg-transparent" 
+        <div
+          className="fixed inset-0 z-[999] bg-transparent"
           style={{ pointerEvents: "all" }}
           onClick={(e) => e.preventDefault()}
           onMouseDown={(e) => e.preventDefault()}
@@ -139,13 +178,19 @@ export default function Page() {
       </AnimatePresence>
 
       <div className="relative">
-        <div className={`${showNav ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500`}>
+        <div
+          className={`${
+            showNav ? "opacity-100" : "opacity-0"
+          } transition-opacity duration-500`}
+        >
           <Navbar />
         </div>
 
-        <div 
-          className={`${showContent ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500`}
-          style={{ pointerEvents: isAnimating ? 'none' : 'auto' }}
+        <div
+          className={`${
+            showContent ? "opacity-100" : "opacity-0"
+          } transition-opacity duration-500`}
+          style={{ pointerEvents: isAnimating ? "none" : "auto" }}
         >
           <section id="home">
             <HomeSection skipAnimation={true} />

@@ -121,14 +121,29 @@
 @media (max-width: 768px) {
   .grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
-
+  
   .title {
     font-size: 2.5rem;
   }
-
+  
   .imageContainer {
     max-width: 400px;
     margin: 0 auto;
+    justify-content: center;
+  }
+  
+  .image {
+    margin-left: 0;
+    height: auto;
+    max-height: 400px;
+    width: 100%;
+  }
+  
+  .imageContainer::before {
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 450px;
   }
 }
