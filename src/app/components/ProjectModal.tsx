@@ -65,7 +65,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             initial={{ scale: 0.95, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.95, opacity: 0, y: 20 }}
-            onClick={e => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
             className="bg-white rounded-lg w-full max-w-4xl max-h-[90vh] overflow-y-auto relative"
           >
             <div className="p-6">
@@ -77,7 +77,9 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
               </button>
 
               <div className="space-y-6">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4 pr-8">{project.title}</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4 pr-8">
+                  {project.title}
+                </h2>
 
                 {project.workflowImage && (
                   <div className="relative w-full h-96 mb-6 rounded-lg overflow-hidden bg-gray-100">
@@ -97,7 +99,8 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                   </div>
                 </div>
 
-                {(project.github || project.demo) && (
+                {/* Only render links if the project is not "Home Network" */}
+                {project.title !== "Home Network" && (project.github || project.demo) && (
                   <div className="flex flex-wrap gap-4 mt-6">
                     {project.github && (
                       <motion.a
@@ -131,6 +134,5 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
     </AnimatePresence>
   );
 
-  // Use createPortal to render the modal at the document body level
   return createPortal(modalContent, document.body);
 }

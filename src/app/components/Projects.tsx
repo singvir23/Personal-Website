@@ -28,7 +28,6 @@ const techIcons: TechIconsType = {
   JavaScript: { src: '/icons/javascript.svg', preload: true },
   Ubuntu: { src: '/icons/ubuntu.png', preload: false },
   WireGuard: { src: '/icons/wireguard.png', preload: false },
-  Jellyfin: { src: '/icons/jellyfin.svg', preload: false },
   AWS: { src: '/icons/AWS.svg', preload: true },
   BeautifulSoup: { src: '/icons/soup.png', preload: false },
   GCP: { src: '/icons/gcp.svg', preload: false },
@@ -95,20 +94,11 @@ const projects: Project[] = [
   **Static IP Setup & SSH Access:**
   I set up a static IP address to keep the server accessible on the network and configured SSH for secure, remote access. This made managing the server from any device super convenient and straightforward.
   
-  
-  **SMB File Sharing:**
-  Using Samba, I created a shared folder that works like a personal cloud for all my devices. It's secure, easy to use, and lets me transfer files across Windows, macOS, and Linux without any hassle.
-  
-  
-  **Jellyfin Media Server:**
-  I set up Jellyfin to turn the server into a personal streaming platform for music, movies, and shows. Now, I can organize and stream my media collection to any device on my network.
-  
-  
   **Wireguard VPN:**
   I configured Wireguard to set up a secure VPN that connects me to my home server from anywhere. It's fast, private, and works perfectly with the dynamic DNS I set up for remote access.
   
   `,
-    technologies: ['Ubuntu', 'WireGuard', 'Jellyfin'],
+    technologies: ['Ubuntu', 'WireGuard'],
     image: '/server.jpeg',
     workflowImage: '/serverwork.jpeg',
     github: 'https://github.com/singvir23/News-Webscraper',
