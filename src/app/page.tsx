@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Head from "next/head";
 import Navbar from "./components/Navbar";
@@ -25,6 +25,7 @@ export default function Page() {
   const [logoPosition, setLogoPosition] = useState<"center" | "navbar">("center");
   const [showNav, setShowNav] = useState(false);
   const [isAnimating, setIsAnimating] = useState(true);
+  const videoStartedRef = useRef(false);
 
   // Preload only the large hero images or critical content you want immediately
   usePreloadImages([
@@ -32,16 +33,14 @@ export default function Page() {
     "/server.jpeg",
     "/cnn.png",
     "/chatbot.png",
-    // Remove icon preloads so they load only when needed
   ]);
 
   useEffect(() => {
     setIsMounted(true);
     window.scrollTo(0, 0);
-    // Lock scrolling via CSS
     document.body.style.overflow = "hidden";
 
-    // Ensure animation plays every time.
+    // Reset state for every new page load
     setShowContent(false);
     setLogoPosition("center");
     setShowNav(false);
@@ -51,38 +50,34 @@ export default function Page() {
   useEffect(() => {
     if (!isAnimating) return;
 
-    const preventDefault = (e: Event) => {
-      e.preventDefault();
-    };
-
+    const preventDefault = (e: Event) => e.preventDefault();
     const preventKeyScroll = (e: KeyboardEvent) => {
-      // List of keys that can cause scrolling
-      const keys = [
-        "ArrowUp",
-        "ArrowDown",
-        "PageUp",
-        "PageDown",
-        "Home",
-        "End",
-        " ",
-      ];
-      if (keys.includes(e.key)) {
-        e.preventDefault();
-      }
+      const keys = ["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "];
+      if (keys.includes(e.key)) e.preventDefault();
     };
 
-    // Add event listeners to prevent scrolling.
     window.addEventListener("wheel", preventDefault, { passive: false });
     window.addEventListener("touchmove", preventDefault, { passive: false });
     window.addEventListener("keydown", preventKeyScroll, { passive: false });
 
-    // Clean up the listeners when animation is done or the component unmounts.
     return () => {
       window.removeEventListener("wheel", preventDefault);
       window.removeEventListener("touchmove", preventDefault);
       window.removeEventListener("keydown", preventKeyScroll);
     };
   }, [isAnimating]);
+
+  // Fallback: If the video doesn't start playing after 1 second, trigger the animation end.
+  useEffect(() => {
+    const fallbackTimer = setTimeout(() => {
+      if (!videoStartedRef.current) {
+        console.warn("Video did not start playing within 1 second. Proceeding without video.");
+        handleVideoEnd();
+      }
+    }, 1000);
+
+    return () => clearTimeout(fallbackTimer);
+  }, []);
 
   const handleVideoEnd = () => {
     setTimeout(() => {
@@ -92,7 +87,6 @@ export default function Page() {
         setTimeout(() => {
           setShowContent(true);
           setIsAnimating(false);
-          // Unlock scrolling after animation is finished.
           document.body.style.overflow = "auto";
           window.scrollTo({ top: 0, behavior: "smooth" });
         }, 200);
@@ -105,8 +99,6 @@ export default function Page() {
   return (
     <>
       <Head>
-        {/* Only preload the images actually needed above-the-fold 
-            and remove non-critical icon preloads */}
         <link rel="preload" href="/drumAI.jpeg" as="image" />
         <link rel="preload" href="/server.jpeg" as="image" />
         <link rel="preload" href="/cnn.png" as="image" />
@@ -168,10 +160,21 @@ export default function Page() {
                 autoPlay
                 muted
                 playsInline
+                onPlay={() => {
+                  // Mark that the video has started playing.
+                  videoStartedRef.current = true;
+                }}
                 onEnded={handleVideoEnd}
+                onError={(e) => {
+                  console.error("Video error", e);
+                  handleVideoEnd(); // Proceed if there is an error loading the video.
+                }}
                 className="w-full h-full object-cover rounded-full"
-                src="/viraajanimation.mp4"
-              />
+              >
+                <source src="/viraajanimation.mp4" type="video/mp4" />
+                <source src="/viraajanimation.webm" type="video/webm" />
+                Your browser does not support the video tag.
+              </video>
             </motion.div>
           </motion.div>
         )}
@@ -179,17 +182,13 @@ export default function Page() {
 
       <div className="relative">
         <div
-          className={`${
-            showNav ? "opacity-100" : "opacity-0"
-          } transition-opacity duration-500`}
+          className={`${showNav ? "opacity-100" : "opacity-0"} transition-opacity duration-500`}
         >
           <Navbar />
         </div>
 
         <div
-          className={`${
-            showContent ? "opacity-100" : "opacity-0"
-          } transition-opacity duration-500`}
+          className={`${showContent ? "opacity-100" : "opacity-0"} transition-opacity duration-500`}
           style={{ pointerEvents: isAnimating ? "none" : "auto" }}
         >
           <section id="home">
