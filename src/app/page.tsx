@@ -74,7 +74,7 @@ export default function Page() {
         console.warn("Video did not start playing within 1 second. Proceeding without video.");
         handleVideoEnd();
       }
-    }, 1000);
+    }, 500);
 
     return () => clearTimeout(fallbackTimer);
   }, []);
