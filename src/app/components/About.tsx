@@ -17,7 +17,7 @@ export default function AboutSection() {
         <div className={styles.grid}>
           <div className={styles.imageContainer}>
             <motion.img
-              src="./subject.png" // Add your profile image here
+              src="./Subject.png" // Add your profile image here
               alt="Profile"
               className={styles.image}
               initial={{ opacity: 0, scale: 0.8, x: -10 }}
