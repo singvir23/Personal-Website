@@ -24,15 +24,18 @@
 
 .grid {
   display: grid;
-  grid-template-columns: 2fr 3fr;
+  grid-template-columns: 1fr;
   gap: 4rem;
   align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .textContent {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  text-align: center;
 }
 
 .description {
@@ -52,6 +55,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
+  justify-content: center;
 }
 
 .tag {
@@ -74,7 +78,7 @@
   width: 100%;
   aspect-ratio: 1;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   overflow: visible;
 }
@@ -87,8 +91,7 @@
   background-color: transparent;
   position: relative;
   z-index: 2;
-  margin-left: -1rem;
-  margin-top: -1rem;
+  margin: -1rem 0 0 0;
   mask-image: linear-gradient(
     to right,
     transparent 0%,
@@ -110,7 +113,7 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-63%, -50%);
+  transform: translate(-50%, -50%);
   width: 450px;
   height: 450px;
   background: rgba(45, 212, 191, 0.25);
@@ -121,7 +124,6 @@
 
 @media (max-width: 768px) {
   .grid {
-    grid-template-columns: 1fr;
     gap: 2rem;
   }
   
@@ -132,18 +134,15 @@
   .imageContainer {
     max-width: 400px;
     margin: 0 auto;
-    justify-content: center;
   }
   
   .image {
-    margin-left: 0;
     height: auto;
     max-height: 400px;
     width: 80%;
   }
   
   .imageContainer::before {
-    transform: translate(-50%, -50%);
     width: 400px;
     height: 360px;
   }

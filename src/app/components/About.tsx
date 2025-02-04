@@ -12,22 +12,9 @@ export default function AboutSection() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <h2 className={styles.title}>About Me</h2>
+        <h2 className={styles.title}>About</h2>
         
-        <div className={styles.grid}>
-          <div className={styles.imageContainer}>
-            <motion.img
-              src="./Subject.png" // Add your profile image here
-              alt="Profile"
-              className={styles.image}
-              initial={{ opacity: 0, scale: 0.8, x: -10 }}
-              whileInView={{ opacity: 1, scale: 1, x: 10 }} // Slight shift to the right
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            />
-            <div className={styles.greenGlow}></div> {/* Green glow effect */}
-          </div>
-          
+        <div className={styles.grid}>      
           <div className={styles.textContent}>
             <p className={styles.description}>
               Hello, and welcome to my portfolio!

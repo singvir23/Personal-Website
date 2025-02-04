@@ -46,7 +46,8 @@
 /* Project Card Styling with Combined Green and Black Shadows */
 .projectCard {
   position: relative;
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
   background: rgba(255, 255, 255, 0.95);
   border-radius: 0.75rem;
   padding: 2rem;
