@@ -139,10 +139,10 @@ export default function Page() {
               animate={
                 logoPosition === "navbar"
                   ? {
-                      width: "64px",
-                      height: "64px",
-                      top: "1rem",
-                      left: "3rem",
+                      width: "62px",
+                      height: "62px",
+                      top: ".9rem",
+                      left: "3.1rem",
                       x: 0,
                       y: 0,
                       borderRadius: "50%",
@@ -150,7 +150,7 @@ export default function Page() {
                   : {}
               }
               transition={{
-                duration: 0.8,
+                duration: 1,
                 type: "spring",
                 damping: 22,
                 stiffness: 100,
@@ -170,8 +170,8 @@ export default function Page() {
                   handleVideoEnd(); // Proceed if there is an error loading the video.
                 }}
                 className="w-full h-full object-cover rounded-full"
+                onContextMenu={(e) => e.preventDefault()}
               >
-                <source src="/viraajanimation.mp4" type="video/mp4" />
                 <source src="/viraajanimation.webm" type="video/webm" />
                 Your browser does not support the video tag.
               </video>
