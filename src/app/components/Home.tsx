@@ -10,18 +10,11 @@ interface HomeProps {
 
 export default function Home({ skipAnimation = false }: HomeProps) {
   const [isMounted, setIsMounted] = useState(false);
-  const [text, setText] = useState<React.ReactNode[]>([]);
+  const [text, setText] = useState("");
   const [showContent, setShowContent] = useState(false);
   const [animationComplete, setAnimationComplete] = useState(false);
 
-  const fullText =
-    "Currently pursuing a BS in Computer Science with a minor in Digital Storytelling at the University of Maryland";
-
-  // Define the phrases to highlight
-  const highlights = [
-    { phrase: "Computer Science" },
-    { phrase: "Digital Storytelling" },
-  ];
+  const fullText = "Computer Science and Digital Storytelling at the University of Maryland";
 
   useEffect(() => {
     setIsMounted(true);
@@ -29,8 +22,7 @@ export default function Home({ skipAnimation = false }: HomeProps) {
     if (skipAnimation) {
       setShowContent(true);
       setAnimationComplete(true);
-      const highlightedText = applyHighlights(fullText);
-      setText(highlightedText);
+      setText(fullText);
       return;
     }
 
@@ -46,8 +38,7 @@ export default function Home({ skipAnimation = false }: HomeProps) {
         let currentIndex = 0;
         const interval = setInterval(() => {
           if (currentIndex <= fullText.length) {
-            const currentText = applyHighlights(fullText.slice(0, currentIndex));
-            setText(currentText);
+            setText(fullText.slice(0, currentIndex));
             currentIndex++;
           } else {
             clearInterval(interval);
@@ -61,33 +52,6 @@ export default function Home({ skipAnimation = false }: HomeProps) {
     return () => clearTimeout(videoTimeout);
   }, [skipAnimation]);
 
-  // Function to apply highlights to the text
-  const applyHighlights = (text: string): React.ReactNode[] => {
-    const nodes: React.ReactNode[] = [];
-    let remainingText = text;
-
-    highlights.forEach((highlight, idx) => {
-      const index = remainingText.indexOf(highlight.phrase);
-      if (index !== -1) {
-        if (index > 0) {
-          nodes.push(remainingText.substring(0, index));
-        }
-        nodes.push(
-          <span key={idx} className={styles.highlight}>
-            {highlight.phrase}
-          </span>
-        );
-        remainingText = remainingText.substring(index + highlight.phrase.length);
-      }
-    });
-
-    if (remainingText.length > 0) {
-      nodes.push(remainingText);
-    }
-
-    return nodes;
-  };
-
   if (!isMounted) return null;
 
   return (
@@ -100,6 +64,7 @@ export default function Home({ skipAnimation = false }: HomeProps) {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           Viraaj Singh
+
         </motion.h1>
 
         <div className={styles.description}>{text}</div>
