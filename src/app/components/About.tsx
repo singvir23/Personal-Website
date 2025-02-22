@@ -32,36 +32,14 @@ const AboutSection = () => {
           </div>
           
           {/* Polaroid Images */}
-          <div className="relative flex justify-center items-center gap-16">
-            {/* First Polaroid */}
-            <div className="transform -rotate-6">
-              <div className="bg-white p-6 shadow-xl rounded-sm border border-gray-100" style={{ background: '#f8f8f5' }}>
-                <div className="border-8 border-white shadow-inner">
-                  <Image
-                    src="/sideprofile.jpeg"
-                    alt="Side profile"
-                    width={192}  // 48 * 4 (since w-48 is 12rem, and 1rem is typically 16px)
-                    height={192}
-                    className="object-cover grayscale opacity-90"
-                  />
-                </div>
-              </div>
-            </div>
-            
-            {/* Second Polaroid */}
-            <div className="transform rotate-6">
-              <div className="bg-white p-6 shadow-xl rounded-sm border border-gray-100" style={{ background: '#f8f8f5' }}>
-                <div className="border-8 border-white shadow-inner">
-                  <Image
-                    src="/liljit.jpg"
-                    alt="Lil Jit"
-                    width={192}
-                    height={192}
-                    className="object-cover grayscale opacity-90"
-                  />
-                </div>
-              </div>
-            </div>
+          <div className="relative flex justify-center md:justify-end lg:translate-x-0 xl:translate-x-8 items-center pt-2 md:pt-4">
+            <Image
+              src="/sideprofile.jpeg"
+              alt="Side profile"
+              width={400}
+              height={400}
+              className="object-cover opacity-90 w-[300px] md:w-[400px] rounded-xl shadow-lg"
+            />
           </div>
         </div>
       </motion.div>
