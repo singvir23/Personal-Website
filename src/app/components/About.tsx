@@ -23,7 +23,7 @@ const AboutSection = () => {
               Hello, and welcome to my portfolio!
             </p>
             <p className="text-lg text-gray-700 leading-relaxed">
-              I'm Viraaj, a developer and student at the University of Maryland with a passion for building software. Whether it be creating immersive digital stories, building tools for drummers, or optimizing business processes, I love to apply my software skills in creative and practical ways. I enjoy a challenge and am always looking for new ways to apply my software expertise.
+              I&apos;m Viraaj, a developer and student at the University of Maryland with a passion for building software. Whether it be creating immersive digital stories, building tools for drummers, or optimizing business processes, I love to apply my software skills in creative and practical ways. I enjoy a challenge and am always looking for new ways to apply my software expertise.
             </p>
             <p className="text-lg text-gray-700 leading-relaxed">
               Aside from coding, I am an avid drummer and frequent traveler.
