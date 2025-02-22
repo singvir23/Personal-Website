@@ -4,6 +4,7 @@
 .projectsContainer {
   background: #fdfdfd;
   padding: 0rem 0;
+  padding-bottom: 1rem;
   overflow: hidden;
   min-height: 100vh;
   width: 100%;
@@ -46,7 +47,7 @@
 /* Project Card Styling with Combined Green and Black Shadows */
 .projectCard {
   position: relative;
-  width: 80%;
+  width: 70%;
   margin: 0 auto;
   background: rgba(255, 255, 255, 0.95);
   border-radius: 0.75rem;
@@ -114,9 +115,21 @@
 }
 
 .newsWebscraperImage {
-  width: 100%;
+  width: 80%;
   height: auto;
-  margin-top: 70px;
+  margin-top: 0px;
+  margin-left: 30px;
+}
+
+.serverImage {
+  width: 80%;
+  height: auto;
+  margin-top: 80px;
+}
+
+.pathosImage {
+  transform: translate(0px, 70px);
+  width: 130%;
 }
 
 /* Project Details Container */
@@ -130,7 +143,7 @@
 /* Project Title */
 .projectTitle {
   font-size: 2rem;
-  font-weight: 600;
+  font-weight: 500;
   color: #1F2937;
   margin-bottom: 0.5rem;
 }

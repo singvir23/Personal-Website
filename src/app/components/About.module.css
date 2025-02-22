@@ -1,19 +1,3 @@
-.container {
-  min-height: 100vh;
-  background-color: #fdfdfd;
-  padding: 0rem 2rem;
-  display: flex;
-  align-items: center;
-  margin-top: -10rem;
-  margin-bottom: -5rem
-}
-
-.content {
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-}
-
 .title {
   font-size: 3rem;
   font-weight: 500;
@@ -24,128 +8,19 @@
                0 0 25px rgba(16, 185, 129, 0.3);
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 4rem;
+.container {
+  min-height: 100vh;
+  background-color: #fdfdfd;
+  padding: 0 2rem;
+  display: flex;
   align-items: center;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.textContent {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  text-align: center;
-}
-
-.description {
-  font-size: 1.125rem;
-  color: #374151;
-  line-height: 1.75;
-}
-
-.subtitle {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #374151;
-  margin-bottom: 1rem;
-}
-
-.interestTags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  justify-content: center;
-}
-
-.tag {
-  background-color: rgba(45, 212, 191, 0.1);
-  color: #374151;
-  padding: 0.5rem 1rem;
-  border-radius: 9999px;
-  font-size: 0.875rem;
-  border: 1px solid rgba(45, 212, 191, 0.2);
-  transition: all 0.3s ease;
-}
-
-.tag:hover {
-  background-color: rgba(45, 212, 191, 0.2);
-  transform: translateY(-2px);
-}
-
-.imageContainer {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: visible;
-}
-
-.image {
-  width: auto;
-  height: 300px;
-  object-fit: contain;
-  border-radius: 1rem;
-  background-color: transparent;
-  position: relative;
-  z-index: 2;
-  margin: -1rem 0 0 0;
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 15%,
-    black 85%,
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 15%,
-    black 85%,
-    transparent 100%
-  );
-}
-
-.imageContainer::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 450px;
-  height: 450px;
-  background: rgba(45, 212, 191, 0.25);
-  filter: blur(40px);
-  border-radius: 50%;
-  z-index: 1;
+  margin-top: -10rem;
+  margin-bottom: -5rem;
 }
 
 @media (max-width: 768px) {
-  .grid {
-    gap: 2rem;
-  }
-  
-  .title {
-    font-size: 2.5rem;
-  }
-  
-  .imageContainer {
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  
-  .image {
-    height: auto;
-    max-height: 400px;
-    width: 80%;
-  }
-  
-  .imageContainer::before {
-    width: 400px;
-    height: 360px;
+  .container {
+    padding-top: 9rem;
+    padding-bottom: 8rem;
   }
 }

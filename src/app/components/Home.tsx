@@ -26,15 +26,12 @@ export default function Home({ skipAnimation = false }: HomeProps) {
       return;
     }
 
-    // Start content after video animation
     const videoTimeout = setTimeout(() => {
       setShowContent(true);
 
-      // Start name animation
       setTimeout(() => {
         setAnimationComplete(true);
 
-        // Start streaming text only after name animation is complete
         let currentIndex = 0;
         const interval = setInterval(() => {
           if (currentIndex <= fullText.length) {
@@ -46,8 +43,8 @@ export default function Home({ skipAnimation = false }: HomeProps) {
         }, 30);
 
         return () => clearInterval(interval);
-      }, 800); // Duration of name animation
-    }, 1000); // Delay for video animation
+      }, 800);
+    }, 1000);
 
     return () => clearTimeout(videoTimeout);
   }, [skipAnimation]);
@@ -58,13 +55,12 @@ export default function Home({ skipAnimation = false }: HomeProps) {
     <div className={styles.container}>
       <div className={styles.content}>
         <motion.h1
-          className={styles.nameText}
+          className={`${styles.nameText} pacifico-regular`}
           initial={!skipAnimation ? { opacity: 0, y: 50 } : false}
           animate={{ opacity: showContent ? 1 : 0, y: showContent ? 0 : 50 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           Viraaj Singh
-
         </motion.h1>
 
         <div className={styles.description}>{text}</div>
@@ -91,7 +87,10 @@ export default function Home({ skipAnimation = false }: HomeProps) {
           >
             <FaGithub size={36} />
           </a>
-          <a href="mailto:viraajsingh135@gmail.com" className={styles.socialLink}>
+          <a 
+            href="mailto:viraajsingh135@gmail.com" 
+            className={styles.socialLink}
+          >
             <FaEnvelope size={36} />
           </a>
         </motion.div>
