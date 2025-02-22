@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import styles from "./About.module.css";
+import Image from 'next/image';
 
 const AboutSection = () => {
   return (
@@ -36,7 +37,7 @@ const AboutSection = () => {
             <div className="transform -rotate-6">
               <div className="bg-white p-6 shadow-xl rounded-sm border border-gray-100" style={{ background: '#f8f8f5' }}>
                 <div className="border-8 border-white shadow-inner">
-                  <img
+                  <Image
                     src="/sideprofile.jpeg"
                     alt="Placeholder 1"
                     className="w-48 h-48 object-cover grayscale opacity-90"
@@ -49,7 +50,7 @@ const AboutSection = () => {
             <div className="transform rotate-6">
               <div className="bg-white p-6 shadow-xl rounded-sm border border-gray-100" style={{ background: '#f8f8f5' }}>
                 <div className="border-8 border-white shadow-inner">
-                  <img
+                  <Image
                     src="/liljit.jpg"
                     alt="Placeholder 2"
                     className="w-48 h-48 object-cover grayscale opacity-90"
