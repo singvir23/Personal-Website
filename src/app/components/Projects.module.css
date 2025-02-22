@@ -1,5 +1,3 @@
-/* Projects.module.css */
-
 /* Projects Container with Updated Background */
 .projectsContainer {
   background: #fdfdfd;
@@ -15,7 +13,7 @@
   will-change: transform;
 }
 
-/* Header Styling with New Text Effects */
+/* Header Styling with Text Effects */
 .projectsHeader {
   text-align: center;
   font-size: 3rem;
@@ -33,7 +31,7 @@
     0 0 25px rgba(16, 185, 129, 0.3);
 }
 
-/* Projects Wrapper for Single Column Layout */
+/* Projects Wrapper */
 .projectsWrapper {
   width: 100%;
   max-width: 90rem;
@@ -44,7 +42,7 @@
   padding: 0 2rem;
 }
 
-/* Project Card Styling with Combined Green and Black Shadows */
+/* Project Card Styling */
 .projectCard {
   position: relative;
   width: 70%;
@@ -79,108 +77,7 @@
   gap: 2rem;
 }
 
-/* Mobile-first approach */
-/* Projects.module.css */
-
-/* [Previous styles remain the same until mobile media query] */
-
-/* Mobile-first approach */
-/* Projects.module.css */
-
-/* [Previous styles remain the same until mobile media query] */
-
-/* Mobile-first approach */
-@media (max-width: 768px) {
-  .projectCard {
-    width: 90%;
-    padding: 1.5rem;
-  }
-
-  .projectContent {
-    grid-template-columns: 1fr;
-    gap: 2rem;  /* Increased from 1rem to create more space */
-  }
-
-  .imageContainer {
-    height: 200px;
-    margin-bottom: 1rem;  /* Added margin to create space */
-    position: relative;  /* Ensure proper stacking */
-    z-index: 1;  /* Keep image above background */
-  }
-
-  .projectDetails {
-    gap: 1rem;
-    margin-top: 0;  /* Removed negative margin */
-    text-align: center;
-    position: relative;
-    z-index: 2;  /* Ensure details appear above image */
-    background: rgba(255, 255, 255, 0.95);  /* Added slight background to ensure text readability */
-    padding: 1rem;
-    border-radius: 0.5rem;
-  }
-
-  .projectTitle {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    text-align: center;
-  }
-
-  /* Re-enable these elements instead of hiding them */
-  .projectDescription,
-  .projectLinks,
-  .projectDetails a {
-    display: block;
-    font-size: 0.9rem;  /* Slightly smaller text on mobile */
-  }
-
-  .techStack {
-    margin: 0.5rem 0;
-    justify-content: center;
-  }
-
-  .projectsWrapper {
-    gap: 2rem;  /* Reduced gap between projects */
-    padding-top: 1rem;  /* Added padding to start content closer to header */
-  }
-
-  .projectsHeader {
-    font-size: 2rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    padding: 1rem 0;  /* Reduced padding */
-  }
-}
-
-/* Phone-specific styles */
-@media (max-width: 480px) {
-  .projectsWrapper {
-    margin-top: 0rem;  /* Negative margin to reduce gap */
-    gap: 2rem;
-  }
-
-  .projectTitle {
-    font-size: 1.5rem;
-    margin-top: -13rem;
-    text-align: center;
-  }
-  
-  .projectCard {
-    margin-top: 0;  /* Reset margin to work with negative margin above */
-  }
-}
-
-/* [Rest of the styles remain the same] */
-
-/* [Rest of the styles remain the same] */
-
-@media (min-width: 769px) {
-  .projectContent {
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-  }
-}
-
-/* Image Container with Parallax Effect */
+/* Image Container */
 .imageContainer {
   position: relative;
   overflow: hidden;
@@ -200,30 +97,6 @@
   transition: transform 0.5s ease;
   transform: translateZ(20px);
   will-change: transform;
-}
-
-/* Specific Image Styles */
-.drumAIImage {
-  object-fit: contain;
-  padding: 1rem;
-}
-
-.newsWebscraperImage {
-  width: 80%;
-  height: auto;
-  margin-top: 0px;
-  margin-left: 30px;
-}
-
-.serverImage {
-  width: 80%;
-  height: auto;
-  margin-top: 80px;
-}
-
-.pathosImage {
-  transform: translate(0px, 70px);
-  width: 130%;
 }
 
 /* Project Details Container */
@@ -312,4 +185,112 @@
 .demoLink:hover {
   color: #059669;
   background: rgba(16, 185, 129, 0.2);
+}
+
+/* Specific Image Styles */
+.drumAIImage {
+  object-fit: contain;
+  padding: 1rem;
+}
+
+.newsWebscraperImage {
+  width: 80%;
+  height: auto;
+  margin-top: 0px;
+  margin-left: 30px;
+}
+
+.serverImage {
+  width: 80%;
+  height: auto;
+  margin-top: 80px;
+}
+
+.pathosImage {
+  transform: translate(0px, 70px);
+  width: 130%;
+}
+
+/* Tablet and Mobile Styles */
+@media (max-width: 768px) {
+  .projectsHeader {
+    font-size: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 1rem 0;
+  }
+
+  .projectsWrapper {
+    gap: 4rem;
+  }
+
+  .projectCard {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  .projectContent {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .imageContainer {
+    height: 250px;
+  }
+
+  .projectDetails {
+    text-align: center;
+  }
+
+  .projectDescription,
+  .projectLinks {
+    display: none;
+  }
+
+  .techStack {
+    justify-content: center;
+    margin-top: -1rem;
+  }
+
+  .projectTitle {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+}
+
+/* Phone-specific styles */
+@media (max-width: 480px) {
+  .projectsHeader {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .projectsWrapper {
+    gap: 3rem;
+  }
+
+  .imageContainer {
+    height: 200px;
+  }
+
+  .projectDetails {
+    padding: 0.5rem;
+  }
+
+  .projectTitle {
+    font-size: 1.3rem;
+    margin-top: 0.5rem;
+  }
+
+  .techStack {
+    margin: -1rem 0;
+  }
+}
+
+/* Desktop Layout */
+@media (min-width: 769px) {
+  .projectContent {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
 }
