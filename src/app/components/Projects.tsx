@@ -39,7 +39,7 @@ const techIcons: TechIconsType = {
 
 const projects: Project[] = [
   {
-    title: "AI Drum Lick Generator",
+    title: "AI Drum Beat Generator",
     description: "A tool that converts textual descriptions into sheet music, helping drum students learn rudiments—the building blocks of drumming.",
     longDescription: `I’ve always wanted to build something that blends my passion for music and technology. After ideating, I thought this one was the most applicable. When I started drumming, I was tasked with learning the “40 rudiments.” I like to describe these as the “words” of the drumming “language.” Most drumming phrases consist of these rudiments stitched together in different ways. When I was learning these rudiments, my teacher pointed me to online resources. However, it got much harder to locate online resources as we began adding variations, or "embellishments," to these rudiments. This resulted in my teacher writing down the patterns on sheets that I would lose the next day 😬😅.
   
