@@ -32,8 +32,10 @@ export default function Page() {
   usePreloadImages([
     "/drumAI.jpeg",
     "/server.jpeg",
-    "/cnn.png",
+    "/pathos.svg",
     "/chatbot.png",
+    "/sideprofile.jpeg",
+    "/liljit.jpg",
   ]);
 
   useEffect(() => {

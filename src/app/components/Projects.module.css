@@ -79,7 +79,58 @@
   gap: 2rem;
 }
 
-@media (min-width: 768px) {
+/* Mobile-first approach */
+@media (max-width: 768px) {
+  .projectCard {
+    width: 90%;
+    padding: 1rem;
+  }
+
+  .projectContent {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .imageContainer {
+    height: 200px;  /* Reduced from 250px */
+  }
+
+  .projectDetails {
+    gap: 0.25rem;
+    margin-top: -6.5rem;  /* Increased negative margin even more */
+    text-align: center;
+    position: relative;  /* Added to ensure proper stacking */
+    z-index: 1;  /* Added to ensure text appears above image */
+  }
+
+  .projectTitle {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+    text-align: center;
+  }
+
+  .projectDescription,
+  .projectLinks,
+  .projectDetails a {
+    display: none;
+  }
+
+  .techStack {
+    margin: 0;
+    justify-content: center;
+  }
+  .projectsWrapper {
+    gap: 4rem;
+  }
+
+  .projectsHeader {
+    font-size: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (min-width: 769px) {
   .projectContent {
     grid-template-columns: 1fr 1fr;
     align-items: center;
@@ -180,45 +231,6 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-}
-
-/* Tooltip Styles */
-.techIconWrapper::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  bottom: 125%;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.75);
-  color: #fff;
-  padding: 4px 8px;
-  border-radius: 4px;
-  white-space: nowrap;
-  font-size: 0.8rem;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.2s ease;
-  z-index: 10;
-}
-
-.techIconWrapper::before {
-  content: '';
-  position: absolute;
-  bottom: 115%;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 4px;
-  border-style: solid;
-  border-color: rgba(0, 0, 0, 0.75) transparent transparent transparent;
-  opacity: 0;
-  transition: all 0.2s ease;
-  z-index: 10;
-}
-
-.techIconWrapper:hover::after,
-.techIconWrapper:hover::before {
-  opacity: 1;
-  transform: translateX(-50%) translateY(-3px);
 }
 
 /* Project Links Container */
