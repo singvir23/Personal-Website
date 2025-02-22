@@ -10,18 +10,11 @@ interface HomeProps {
 
 export default function Home({ skipAnimation = false }: HomeProps) {
   const [isMounted, setIsMounted] = useState(false);
-  const [text, setText] = useState<React.ReactNode[]>([]);
+  const [text, setText] = useState("");
   const [showContent, setShowContent] = useState(false);
   const [animationComplete, setAnimationComplete] = useState(false);
 
-  const fullText =
-    "Currently pursuing a BS in Computer Science with a minor in Digital Storytelling at the University of Maryland";
-
-  // Define the phrases to highlight
-  const highlights = [
-    { phrase: "Computer Science" },
-    { phrase: "Digital Storytelling" },
-  ];
+  const fullText = "Computer Science and Digital Storytelling at the University of Maryland";
 
   useEffect(() => {
     setIsMounted(true);
@@ -29,25 +22,20 @@ export default function Home({ skipAnimation = false }: HomeProps) {
     if (skipAnimation) {
       setShowContent(true);
       setAnimationComplete(true);
-      const highlightedText = applyHighlights(fullText);
-      setText(highlightedText);
+      setText(fullText);
       return;
     }
 
-    // Start content after video animation
     const videoTimeout = setTimeout(() => {
       setShowContent(true);
 
-      // Start name animation
       setTimeout(() => {
         setAnimationComplete(true);
 
-        // Start streaming text only after name animation is complete
         let currentIndex = 0;
         const interval = setInterval(() => {
           if (currentIndex <= fullText.length) {
-            const currentText = applyHighlights(fullText.slice(0, currentIndex));
-            setText(currentText);
+            setText(fullText.slice(0, currentIndex));
             currentIndex++;
           } else {
             clearInterval(interval);
@@ -55,38 +43,11 @@ export default function Home({ skipAnimation = false }: HomeProps) {
         }, 30);
 
         return () => clearInterval(interval);
-      }, 800); // Duration of name animation
-    }, 1000); // Delay for video animation
+      }, 800);
+    }, 1000);
 
     return () => clearTimeout(videoTimeout);
   }, [skipAnimation]);
-
-  // Function to apply highlights to the text
-  const applyHighlights = (text: string): React.ReactNode[] => {
-    const nodes: React.ReactNode[] = [];
-    let remainingText = text;
-
-    highlights.forEach((highlight, idx) => {
-      const index = remainingText.indexOf(highlight.phrase);
-      if (index !== -1) {
-        if (index > 0) {
-          nodes.push(remainingText.substring(0, index));
-        }
-        nodes.push(
-          <span key={idx} className={styles.highlight}>
-            {highlight.phrase}
-          </span>
-        );
-        remainingText = remainingText.substring(index + highlight.phrase.length);
-      }
-    });
-
-    if (remainingText.length > 0) {
-      nodes.push(remainingText);
-    }
-
-    return nodes;
-  };
 
   if (!isMounted) return null;
 
@@ -94,7 +55,7 @@ export default function Home({ skipAnimation = false }: HomeProps) {
     <div className={styles.container}>
       <div className={styles.content}>
         <motion.h1
-          className={styles.nameText}
+          className={`${styles.nameText} pacifico-regular`}
           initial={!skipAnimation ? { opacity: 0, y: 50 } : false}
           animate={{ opacity: showContent ? 1 : 0, y: showContent ? 0 : 50 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -126,7 +87,10 @@ export default function Home({ skipAnimation = false }: HomeProps) {
           >
             <FaGithub size={36} />
           </a>
-          <a href="mailto:viraajsingh135@gmail.com" className={styles.socialLink}>
+          <a 
+            href="mailto:viraajsingh135@gmail.com" 
+            className={styles.socialLink}
+          >
             <FaEnvelope size={36} />
           </a>
         </motion.div>

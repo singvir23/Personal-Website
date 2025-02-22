@@ -17,6 +17,7 @@ const skillsData: Record<string, Skill[]> = {
     { name: "HTML", icon: "/icons/html.svg" },
     { name: "CSS", icon: "/icons/css.svg" },
     { name: "JavaScript", icon: "/icons/javascript.svg" },
+    { name: "SQL", icon: "/icons/sql.png" },
   ],
   "Frameworks & Libraries": [
     { name: "React", icon: "/icons/react.svg" },

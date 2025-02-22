@@ -8,6 +8,7 @@ import HomeSection from "./components/Home";
 import ProjectsSection from "./components/Projects";
 import SkillsSection from "./components/Skills";
 import AboutSection from "./components/About";
+import Footer from "./components/Footer";
 
 // Preload images hook (only truly critical images)
 const usePreloadImages = (imageUrls: string[]) => {
@@ -203,6 +204,7 @@ export default function Page() {
           <section id="skills">
             <SkillsSection />
           </section>
+          <Footer />
         </div>
       </div>
     </>

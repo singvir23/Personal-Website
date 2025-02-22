@@ -32,6 +32,9 @@ const techIcons: TechIconsType = {
   BeautifulSoup: { src: '/icons/soup.png', preload: false },
   GCP: { src: '/icons/gcp.svg', preload: false },
   ChatGPT: { src: '/icons/chat.svg', preload: false },
+  HTML: { src: "/icons/html.svg", preload: false },
+  OpenCV: { src: "/icons/opencv.svg", preload: false },
+  Flask: { src: "/icons/flask.svg", preload: false },
 };
 
 const projects: Project[] = [
@@ -73,15 +76,25 @@ const projects: Project[] = [
   - RQXFD RQXFD RQXFD RQXFD
   - RE3 LE3 RE3 RE3F  LE3 RE3 LE3 LE3F  RE3 LE3 RE3 RE3F`,
     technologies: ['React', 'Node', 'Python', 'CSS', 'JavaScript', 'AWS', 'ChatGPT'],
-    image: '/drumAI.jpeg',
-    workflowImage: '/drumAI.jpeg',
+    image: '/snare.avif',
+    workflowImage: '/drumAI1.png',
     github: 'https://github.com/singvir23/drum-AI-v1.5',
     demo: 'https://drum-ai-frontend.vercel.app/'
+  },
+  {
+    title: "Pathos",
+    description: "It's often hard for us to recognize how others are feeling, especially through a screen. Enter Pathos: a neat and unassuming extension making sure you properly understand every virtual interaction.",
+    longDescription: "Pathos identifies faces on the screen using DeepFace's, a lightweight face recognition and facial attribute analysis (age, gender, emotion and race) framework for python. It is a hybrid face recognition framework wrapping state-of-the-art models: VGG-Face, FaceNet, OpenFace, DeepFace, DeepID, ArcFace, Dlib, SFace and GhostFaceNet. Using DeepFace, Pathos can segment the screen to identify faces, and classify their facial expressions into different emotional categories: happy, sad, anger, fear, surprise, disgust, and neutral. Each frame in the screen is fed into our model at a rate of 30 frames per second, and when each new face is detected, the model outputs the average measured emotion over a span of two seconds to prevent the model being hypersensitive to facial movements.",
+    technologies: ['Python', 'Flask', 'OpenCV', 'HTML', 'CSS'],
+    image: '/pathos.svg',
+    workflowImage: '/pathos.svg',
+    github: 'https://github.com/singvir23/Pathos',
+    demo: 'https://www.youtube.com/watch?v=Xaw7UK7DCSA&ab_channel=BilalAli',
   },
   
   {
     title: "Home Network",
-    description: "Created a home network for my family using Ubuntu Server and other open-source tools. Established a remote connection for global access",
+    description: "Created a home network for my family using an old pc. Utilized Ubuntu Server and other open-source tools. Established a remote connection for global access",
     longDescription: `I decided to create a home server for my family because we were tired of paying $85 a year for Google Cloud storage. I had an old PC lying dormant from my gaming days, so repurposing it as a home server seemed like a good way to bring it back to its glory days. With all the open-source resources, I was able to do this for a grand total of $0 (excluding the original PC cost, of course).
   
   Below, I've outlined the main functionalities of the server along with the technologies I used to achieve them:
@@ -99,7 +112,7 @@ const projects: Project[] = [
   
   `,
     technologies: ['Ubuntu', 'WireGuard'],
-    image: '/server.jpeg',
+    image: '/deepcool4.webp',
     workflowImage: '/serverwork.jpeg',
     github: 'https://github.com/singvir23/News-Webscraper',
     demo: 'https://news-webscraper-red.vercel.app/',
@@ -109,8 +122,8 @@ const projects: Project[] = [
     description: "A webscraper designed to compare FOX and CNN in their images and word counts. Developed for the UMD Digital Engagement Lab",
     longDescription: "This project is intended to further the research in the Digital Engagement Lab at UMD. The Digital Engagement Lab, run by Professor Ronald Yaros, aims to refine a research-based digital content structure model.",
     technologies: ['React', 'Python', 'BeautifulSoup'],
-    image: '/cnn.png',
-    workflowImage: '/cnn.png',
+    image: '/news.svg',
+    workflowImage: '/datavis.png',
     github: 'https://github.com/singvir23/News-Webscraper',
     demo: 'https://news-webscraper-red.vercel.app/',
   },
@@ -119,8 +132,8 @@ const projects: Project[] = [
     description: "A syllabus chatbot for 70 JOUR289i students using LLMs and sentiment analysis to address queries and direct those with negativity to UMD resources.",
     longDescription: "The Sentimental Chatbot was created for my Professor's JOUR289i class with around 70 students. He told me that numerous students would ask him questions that could be directly answered by the syllabus. To solve this problem, he wanted me to create a chatbot which can answer these syllabus related questions for him. \n\tChatGPT has an Assistants API which allows the use of files as context for the model. Using the syllabus as the 'context,' the model is easily able to answer any questions related to the syllabus. One issue I ran into was having the model make up information which wasn't on the syllabus. To address this, I used some negative prompting to ensure that any non-answerable question is directed to the Professor's email.\n\tTo raise mental health awareness and provide useful resources, I incorporated sentiment analysis into the model. When the system detects that a student's mood is negative or sad it automatically provides UMD-specific resources to help them get the help they need. This ensures that students who might not know where to turn can easily access the support services available to them.",
     technologies: ['React', 'Node', 'GCP', 'ChatGPT'],
-    image: '/chatbot.png',
-    workflowImage: '/chatbot.png',
+    image: '/sentimental.svg',
+    workflowImage: '/chatbot2.png',
     github: 'https://github.com/singvir23/yaros-chatbot',
     demo: 'https://drive.google.com/file/d/1CdVCUjapCLYi-fSQipEHLb0fcyTg85CH/view?usp=sharing',
   },
@@ -162,8 +175,10 @@ const ProjectImage = memo(({ project }: { project: Project }) => {
           alt={project.title}
           className={`
             ${styles.projectImage} 
-            ${project.title === 'AI Drum Lick Generator' ? styles.drumAIImage :
-              project.title === 'News Webscraper' ? styles.newsWebscraperImage : ''}
+             ${project.title === 'AI Drum Lick Generator' ? styles.drumAIImage :
+              project.title === 'Home Server' ? styles.serverImage :
+              project.title === 'News Webscraper' ? styles.newsWebscraperImage :
+              project.title === 'Pathos' ? styles.pathosImage : ''}
           `}
           loading="lazy"
           onLoadingComplete={() => setIsLoaded(true)}
