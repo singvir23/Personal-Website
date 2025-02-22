@@ -39,8 +39,10 @@ const AboutSection = () => {
                 <div className="border-8 border-white shadow-inner">
                   <Image
                     src="/sideprofile.jpeg"
-                    alt="Placeholder 1"
-                    className="w-48 h-48 object-cover grayscale opacity-90"
+                    alt="Side profile"
+                    width={192}  // 48 * 4 (since w-48 is 12rem, and 1rem is typically 16px)
+                    height={192}
+                    className="object-cover grayscale opacity-90"
                   />
                 </div>
               </div>
@@ -52,8 +54,10 @@ const AboutSection = () => {
                 <div className="border-8 border-white shadow-inner">
                   <Image
                     src="/liljit.jpg"
-                    alt="Placeholder 2"
-                    className="w-48 h-48 object-cover grayscale opacity-90"
+                    alt="Lil Jit"
+                    width={192}
+                    height={192}
+                    className="object-cover grayscale opacity-90"
                   />
                 </div>
               </div>
